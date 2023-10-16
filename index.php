@@ -8,7 +8,7 @@
   <title>Sport</title>
 </head>
 <div class="header">
-  <h1 class="nav-title">SportifyMatchPro</h1>
+  <h1 class="nav-title">Sportify</h1>
   <ul class="horizontal-nav">
     <li><a href="#">Home</a></li>
     <li><a href="#">About</a></li>
@@ -17,7 +17,7 @@
   </ul>
 </div>
 <div class="section welcome">
-  <h1>Welcome to <span class="title" id="smp">SMP</span></h1>
+  <h1>Welcome to <span class="title" id="sportify">Sportify</span></h1>
 </div>
 
 <div class="section content">
