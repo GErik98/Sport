@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -21,6 +25,8 @@ p {
   padding: 20px;
   border-radius: 10px;
   color: white;
+  position: fixed;
+  width: 100%;
 }
 .nav-title {
   margin: 0; /* Remove default margin for h1 */
@@ -43,12 +49,29 @@ p {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.678);
 }
-
+.content-wrapper {
+  width: 60%;
+  text-align: start;
+  background-color: rgba(0, 0, 0, 0.678);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
 .welcome {
   font-size: 50px;
+  background-color: rgba(0, 0, 0, 0.678);
 }
 .content {
   text-align: center;
+}
+
+.foci {
+  background: url("img/football_bg.jpg") center/cover no-repeat;
+}
+.f1 {
+  background: url("img/f1_bg.jpg") center/cover no-repeat;
+}
+.tenisz {
+  background: url("img/tennis_bg.jpg") center/cover no-repeat;
 }
 h3 {
   color: white;
@@ -64,7 +87,7 @@ p {
   list-style-type: none;
   padding: 0;
   margin: 0; /* Remove default margin for ul */
-  display: flex;
+  display: inline-flex;
 }
 
 .horizontal-nav li {
@@ -78,7 +101,7 @@ p {
   font-size: 18px;
 }
 .login-box {
-  color : white;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -11,17 +11,29 @@
   <h1 class="nav-title">Sportify</h1>
   <ul class="horizontal-nav">
     <li><a href="login.html">Login</a></li>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Services</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#foci">Football</a></li>
+    <li><a href="#f1">Formula 1</a></li>
+    <li><a href="#tenisz">Tennis</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
 </div>
-<div class="section welcome">
+<div class="section welcome" id="home">
   <h1>Welcome to <span class="title" id="sportify">Sportify</span></h1>
 </div>
 
-<div class="section content">
+<div class="section about" id="about">
+  <div class="content-wrapper">
+    <h3>Our goals</h3>
+    <h4>The goal of this website is to madafakapipip and the asdafasdasf so bas asd aseg esgesaged and exactly erum
+      corrupti similique modi, impedit corporis iure natus adipisci id quod hic dicta
+      facere illo, maxime placeat suscipit excepturi quas ipsum commodi. Sapiente molestias accusantium asperiores animi
+      et aliquam similique quia suscipit delectus, no</h4>
+  </div>
+</div>
+
+<div class="section content foci" id="foci">
   <div class="content-wrapper">
     <h3>Foci</h3>
     <p>
@@ -35,7 +47,7 @@
     </p>
   </div>
 </div>
-<div class="section content">
+<div class="section content f1" id="f1">
   <div class="content-wrapper">
     <h3>F1</h3>
     <p>
@@ -49,7 +61,7 @@
     </p>
   </div>
 </div>
-<div class="section content">
+<div class="section content tenisz" id="tenisz">
   <div class="content-wrapper">
     <h3>Tenisz</h3>
     <p>
