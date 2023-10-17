@@ -77,3 +77,13 @@ p {
   font-weight: bold;
   font-size: 18px;
 }
+.login-box {
+  color : white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.678);
+}

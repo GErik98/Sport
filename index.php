@@ -10,6 +10,7 @@
 <div class="header">
   <h1 class="nav-title">Sportify</h1>
   <ul class="horizontal-nav">
+    <li><a href="login.html">Login</a></li>
     <li><a href="#">Home</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Services</a></li>
