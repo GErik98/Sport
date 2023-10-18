@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <title>Sport</title>
 </head>
+<body>
 <div class="header">
   <h1 class="nav-title">Sportify</h1>
   <ul class="horizontal-nav">
