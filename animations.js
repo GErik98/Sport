@@ -1,6 +1,7 @@
 // script.js
 const titleSpan = document.getElementById('smp');
 
+
 // Function to play the animation
 function playAnimation() {
     anime.timeline({ loop: false })
