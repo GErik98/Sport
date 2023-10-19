@@ -2,6 +2,35 @@
 Szerveroldali programozás project
 Sportverseny
 
+------------------------------------------------------------------------------------------------------
+Cél egy komplex, kerek webalkalmazás fejlesztése, el kell készíteni a statikus tartalmat, a kliens és a szerver oldali funkacionalitást.
+
+El kell készíteni egy dokumentációt, amely tartalmazza
+
+    specifikációt,
+    rendszertervet (adatbázis modelljét, az alkalmazás tervét)
+    felhasználói dokumentációt (hogyan kell használni az alkalmazás)
+    telepítési, üzemeltetési útmutatót
+    a teszteléshez szükséges felhasználók adatait
+
+Határidőre fel kell tölteni az alkalmazás telepítőjét, ami tartalmazza
+
+    a fájlokat, amelyeket egyszerűen átmásolva az alkalmazás használható
+    a teszteléshez szükséges adatokkal feltöltött adatbázis exportját, amelyet beimportával az alkalmazás használható
+    dokumentációt pdf formátumban
+
+A webalkalmazást egy 10 perces prezentáció (pdf vagy ppt) segítségével a szorgalmi időszak utolsó hetében be kell mutatni, amin a csapat összes tagjának aktívan részt kell venni.
+
+Értékelési szempontok
+
+    komplexitás
+    helyesség
+    felhasználó-barátság
+    arculat
+    dokumentáció
+    prezentáció
+------------------------------------------------------------------------------------------------------
+
 Egy sportverseny lebonyolítását adminisztráló alkalmazás készítése. 
 
 1.  A verseny lebonyolítási rendszerét a választott sporthoz kell igazítani: mérközéses rendszerű (labdarúgás, tenisz, stb) akár körmérkőzés, akár kieséses lebonyolításban; futam rendszerű (futás, kajak, stb).
