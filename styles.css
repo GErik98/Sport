@@ -115,15 +115,29 @@ p {
   font-size: 1.2em; /* Adjust the font size as needed */
   font-weight: bold;
 }
+
+/*___________________________________LOGIN__________________________________*/
+
 .login-box {
   color: white;
-  display: flex;
-  justify-content: center;
   align-items: center;
   padding: 20px 10px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.678);
+  position: relative;
+}
+
+#login-h2 {
+  text-align: center;
+  margin: auto;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+#sportify {
+  animation: glowing 3s infinite; /* Adjust the duration as needed */
 }
 
 /*______________________KEYFRAMES________________________________*/
@@ -137,8 +151,4 @@ p {
   100% {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }
-}
-
-#sportify {
-  animation: glowing 3s infinite; /* Adjust the duration as needed */
 }
