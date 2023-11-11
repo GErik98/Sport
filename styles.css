@@ -16,6 +16,10 @@ h3,
 p {
   color: rgb(255, 255, 255);
 }
+a {
+  text-decoration: none;
+  color: white;
+}
 
 /*___________________________HEADER, NAVBAR, "OLDAL TETEJE"_________________________________________*/
 
@@ -95,6 +99,9 @@ p {
 .content {
   text-align: center;
 }
+.login {
+  background: url("img/football_field.jpg") center/cover no-repeat;
+}
 
 .foci {
   background: url("img/football_bg.jpg") center/cover no-repeat;
@@ -120,7 +127,7 @@ p {
 /*___________________________________LOGIN__________________________________*/
 
 .login-box {
-  font-size: 35px;
+  font-size: 30px;
   color: white;
   align-items: center;
   padding: 20px 10px;

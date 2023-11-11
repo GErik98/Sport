@@ -1,3 +1,15 @@
+<?php
+session_start();
+$error = "";
+$msg = "";
+require_once("dbconnect.php");
+
+class LoginException extends Exception
+{
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
   <title>Sport</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,24 +36,27 @@
   </div>
 
   <div class="section welcome" id="home">
-    <h1>Welcome to <span class="title" id="sportify">Sportify</span></h1>
+    <h1>Welcome to <span class="title" id="sportify">Sportify</span></h1><br>
   </div>
+
   <div class="section content login" id="login">
-    <div class="login-box">
+    <div class="login-box" data-aos="zoom-in">
       <form>
         <legend style="padding-bottom:10px; text-transform: uppercase;"><b>Login:</b></legend>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name"><br>
-        <label for="email">Email</label>
-        <input style="margin-left:3px;" type="email" id="email" name="email"> <br>
-        <input type="submit" id="submit" value="submit">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password</label>
+        <input style="margin-left:4px;" type="password" id="password" name="password"> <br>
+        <input type="submit" id="submit" value="Login">
       </form>
-      <p style="margin-top: 10px; text-decoration: none;">Dont have account yet?<br> <a href="register.php">Register</a>
-      </p>
+      <p style="margin-top: 10px; text-decoration: none;">Dont have account yet?</p>
+      <a href="register.php">
+        <button id="submit">Register</button>
+      </a>
     </div>
   </div>
   <div class="section content about" id="about">
-    <div class="content-wrapper">
+    <div class="content-wrapper" data-aos="fade-in">
       <h3>Our goals</h3>
       <h4>The goal of this website is to madafakapipip and the asdafasdasf so bas asd aseg esgesaged and exactly erum
         corrupti similique modi, impedit corporis iure natus adipisci id quod hic dicta
@@ -51,7 +67,7 @@
   </div>
 
   <div class="section content foci" id="foci">
-    <div class="content-wrapper">
+    <div class="content-wrapper" data-aos="fade-in">
       <h3>Foci</h3>
       <h4>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab cupiditate quidem blanditiis quam! Blanditiis
@@ -70,7 +86,7 @@
     </div>
   </div>
   <div class="section content f1" id="f1">
-    <div class="content-wrapper">
+    <div class="content-wrapper" data-aos="fade-in">
       <h3>F1</h3>
       <h4>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut doloremque mollitia ab sit eum dolore. Nesciunt,
@@ -87,7 +103,7 @@
     </div>
   </div>
   <div class="section content tenisz" id="tenisz">
-    <div class="content-wrapper">
+    <div class="content-wrapper" data-aos="fade-in">
       <h3>Tenisz</h3>
       <h4>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quasi ex ipsum explicabo quidem id, soluta,
@@ -106,8 +122,12 @@
   <?php
   //echo '<br>asd'; ?>
   <script src="loginscript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
-<!--<script src="animations.js"></script>-->
+
 
 </html>
