@@ -25,7 +25,6 @@ p {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.678);
   padding: 10px;
-  border-radius: 10px;
   color: white;
   width: 100%;
   position: fixed;
@@ -64,6 +63,7 @@ p {
 .section {
   height: 100vh;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   justify-content: center;
   color: white;
@@ -80,6 +80,7 @@ p {
 .welcome {
   font-size: 50px;
   background-color: rgba(0, 0, 0, 0.678);
+  padding: 20px;
 }
 
 .title {
@@ -119,6 +120,7 @@ p {
 /*___________________________________LOGIN__________________________________*/
 
 .login-box {
+  font-size: 35px;
   color: white;
   align-items: center;
   padding: 20px 10px;
@@ -134,6 +136,65 @@ p {
   display: inline-block;
   position: absolute;
   top: 0;
+}
+
+#submit {
+  appearance: none;
+  background-color: #fafbfc;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+#submit:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+#submit:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+
+#submit:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+#submit:focus {
+  outline: 1px transparent;
+}
+
+#submit:before {
+  display: none;
+}
+
+#submit:-webkit-details-marker {
+  display: none;
 }
 
 #sportify {

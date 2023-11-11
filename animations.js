@@ -31,3 +31,7 @@ titleSpan.addEventListener('mouseenter', function() {
 titleSpan.addEventListener('mouseleave', function() {
     // You can add any additional logic here for when the mouse leaves if needed
 });
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
