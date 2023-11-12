@@ -4,10 +4,54 @@ $error = "";
 $msg = "";
 require_once("dbconnect.php");
 
+if (isset($_GET["logout"])) {
+  unset($_SESSION["user"]);
+  unset($_SESSION["userId"]);
+  setcookie("userId", "", time() - 1);
+}
+
+if (!empty($_SESSION["user"])) {
+  if ($user["username"] = "admin") {
+    header("admin.php");
+  } else {
+    header("profil.php");
+  }
+}
 class LoginException extends Exception
 {
 }
 
+
+if (isset($_POST["submitLogin"]) && !empty($connDB)) {
+  try {
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
+    if (empty($username) || empty($password)) {
+      throw new LoginException("Hiányzó adatok");
+    }
+    $sqlLogin = "SELECT id, username, password FROM felhasznalo WHERE username=:username";
+    $queryLogin = $connDB->prepare($sqlLogin);
+    $queryLogin->bindParam("username", $username);
+    $queryLogin->execute();
+    if ($queryLogin->rowCount() == 0) {
+      throw new LoginException("Hibás felhasználói azonosító");
+    }
+    $user = $queryLogin->fetch(PDO::FETCH_ASSOC);
+    if ($password !== $user["password"] || $username !== $user["username"]) {
+      throw new LoginException("Hibás bejelentkezési adatok");
+    }
+    $_SESSION["user"] = array(
+      "id" => $user["id"],
+      "username" => $user["username"],
+      "password" => $user["password"]
+    );
+    echo "<p>Üdv {$user["username"]}</p>\n ";
+  } catch (PDOException $e) {
+    $error = "Adatbázis olvasási hiba: " . $e->getMessage();
+  } catch (LoginException $e) {
+    $error = "Bejelentkezési hiba: " . $e->getMessage();
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +66,14 @@ class LoginException extends Exception
 </head>
 
 <body>
+  <?php
+  if (!empty($error)) {
+    echo $error;
+  }
+  if (!empty($msg)) {
+    echo $msg;
+  } ?>
+
   <div class="header">
     <h1 class="nav-title" id="logo">Sportify</h1>
     <ul class="horizontal-nav">
@@ -41,17 +93,17 @@ class LoginException extends Exception
 
   <div class="section content login" id="login">
     <div class="login-box" data-aos="zoom-in">
-      <form>
+      <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
         <legend style="padding-bottom:10px; text-transform: uppercase;"><b>Login:</b></legend>
         <label for="username">Username</label>
         <input type="text" id="username" name="username"><br>
         <label for="password">Password</label>
         <input style="margin-left:4px;" type="password" id="password" name="password"> <br>
-        <input type="submit" id="submit" value="Login">
+        <input type="submit" id="submitLogin" name="submitLogin" value="Login">
       </form>
       <p style="margin-top: 10px; text-decoration: none;">Dont have account yet?</p>
       <a href="register.php">
-        <button id="submit">Register</button>
+        <button id="submitRegister">Register</button>
       </a>
     </div>
   </div>

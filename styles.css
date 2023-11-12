@@ -19,6 +19,7 @@ p {
 a {
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 /*___________________________HEADER, NAVBAR, "OLDAL TETEJE"_________________________________________*/
@@ -145,7 +146,8 @@ a {
   top: 0;
 }
 
-#submit {
+#submitLogin,
+#submitRegister {
   appearance: none;
   background-color: #fafbfc;
   border: 1px solid rgba(27, 31, 35, 0.15);
@@ -173,34 +175,40 @@ a {
   word-wrap: break-word;
 }
 
-#submit:hover {
+#submitLogin:hover,
+#submitRegister:hover {
   background-color: #f3f4f6;
   text-decoration: none;
   transition-duration: 0.1s;
 }
 
-#submit:disabled {
+#submitLogin:disabled,
+#submitRegister:disabled {
   background-color: #fafbfc;
   border-color: rgba(27, 31, 35, 0.15);
   color: #959da5;
   cursor: default;
 }
 
-#submit:active {
+#submitLogin:active,
+#submitRegister:active {
   background-color: #edeff2;
   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
   transition: none 0s;
 }
 
-#submit:focus {
+#submitLogin:focus,
+#submitRegister:focus {
   outline: 1px transparent;
 }
 
-#submit:before {
+#submitLogin:before,
+#submitRegister:before {
   display: none;
 }
 
-#submit:-webkit-details-marker {
+#submitLogin:-webkit-details-marker,
+#submitRegister:-webkit-details-marker {
   display: none;
 }
 

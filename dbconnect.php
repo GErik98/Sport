@@ -5,5 +5,6 @@ try {
     $connDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     $error = "Adatbázis kapcsolódási hiba: " . $e->getMessage();
+    echo $error;
 }
 ?>
