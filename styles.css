@@ -33,6 +33,7 @@ a {
   color: white;
   width: 100%;
   position: fixed;
+  z-index: 1000;
 }
 .nav-title {
   margin: 0; /* Remove default margin for h1 */
@@ -81,6 +82,7 @@ a {
   background-color: rgba(0, 0, 0, 0.678);
   border-radius: 10px;
   padding: 1.5rem;
+  z-index: 1;
 }
 .welcome {
   font-size: 50px;
@@ -146,6 +148,7 @@ a {
   top: 0;
 }
 
+button,
 #submitLogin,
 #submitRegister {
   appearance: none;
@@ -175,13 +178,15 @@ a {
   word-wrap: break-word;
 }
 
+button:hover,
 #submitLogin:hover,
 #submitRegister:hover {
-  background-color: #f3f4f6;
+  background-color: #dcdddf;
   text-decoration: none;
   transition-duration: 0.1s;
 }
 
+button:disabled,
 #submitLogin:disabled,
 #submitRegister:disabled {
   background-color: #fafbfc;
@@ -190,6 +195,7 @@ a {
   cursor: default;
 }
 
+button:active,
 #submitLogin:active,
 #submitRegister:active {
   background-color: #edeff2;
@@ -197,16 +203,19 @@ a {
   transition: none 0s;
 }
 
+button:focus,
 #submitLogin:focus,
 #submitRegister:focus {
   outline: 1px transparent;
 }
 
+button:before,
 #submitLogin:before,
 #submitRegister:before {
   display: none;
 }
 
+button:-webkit-details-marker,
 #submitLogin:-webkit-details-marker,
 #submitRegister:-webkit-details-marker {
   display: none;

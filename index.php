@@ -11,47 +11,17 @@ if (isset($_GET["logout"])) {
 }
 
 if (!empty($_SESSION["user"])) {
+  echo '<pre>';
+print_r($_SESSION["user"]);
+echo '</pre>';
+  echo "<p>Üdv {$_SESSION["user"]["username"]}</p>";
   if ($user["username"] = "admin") {
     header("admin.php");
   } else {
     header("profil.php");
   }
 }
-class LoginException extends Exception
-{
-}
 
-
-if (isset($_POST["submitLogin"]) && !empty($connDB)) {
-  try {
-    $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);
-    if (empty($username) || empty($password)) {
-      throw new LoginException("Hiányzó adatok");
-    }
-    $sqlLogin = "SELECT id, username, password FROM felhasznalo WHERE username=:username";
-    $queryLogin = $connDB->prepare($sqlLogin);
-    $queryLogin->bindParam("username", $username);
-    $queryLogin->execute();
-    if ($queryLogin->rowCount() == 0) {
-      throw new LoginException("Hibás felhasználói azonosító");
-    }
-    $user = $queryLogin->fetch(PDO::FETCH_ASSOC);
-    if ($password !== $user["password"] || $username !== $user["username"]) {
-      throw new LoginException("Hibás bejelentkezési adatok");
-    }
-    $_SESSION["user"] = array(
-      "id" => $user["id"],
-      "username" => $user["username"],
-      "password" => $user["password"]
-    );
-    echo "<p>Üdv {$user["username"]}</p>\n ";
-  } catch (PDOException $e) {
-    $error = "Adatbázis olvasási hiba: " . $e->getMessage();
-  } catch (LoginException $e) {
-    $error = "Bejelentkezési hiba: " . $e->getMessage();
-  }
-}
 ?>
 
 <!DOCTYPE html>
@@ -66,47 +36,53 @@ if (isset($_POST["submitLogin"]) && !empty($connDB)) {
 </head>
 
 <body>
-  <?php
-  if (!empty($error)) {
-    echo $error;
-  }
-  if (!empty($msg)) {
-    echo $msg;
-  } ?>
-
-  <div class="header">
-    <h1 class="nav-title" id="logo">Sportify</h1>
-    <ul class="horizontal-nav">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#login">Login/Register</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#foci">Football</a></li>
-      <li><a href="#f1">Formula 1</a></li>
-      <li><a href="#tenisz">Tennis</a></li>
-      <li><a href="#">Contact</a></li>
+<?php
+if(!isset($_SESSION["user"])) {
+    echo "<div class='header'>
+    <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
+    <ul class='horizontal-nav'>
+      <li><a href='#about'>About</a></li>
+      <li><a href='#foci'>Football</a></li>
+      <li><a href='#f1'>Formula 1</a></li>
+      <li><a href='#tenisz'>Tennis</a></li>
+      <li><a href='login.php'>Login</a></li>
+      <li><a href='register.php'>Register</a></li>
+      <li><a href='#'>Contact</a></li>
     </ul>
-  </div>
+  </div>";
+} elseif($_SESSION["user"]["role"] === "admin") {
+  echo "<div class='header'>
+    <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
+    <ul class='horizontal-nav'>
+    <li><a href='#about'>ADMIN</a></li>
+      <li><a href='#about'>About</a></li>
+      <li><a href='#foci'>Football</a></li>
+      <li><a href='#f1'>Formula 1</a></li>
+      <li><a href='#tenisz'>Tennis</a></li>
+      <li><a href='#'>Contact</a></li>
+      <li><a href='index.php?logout'>Logout</a></li>
+    </ul>
+  </div>";} else {
+    echo "<div class='header'>
+    <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
+    <ul class='horizontal-nav'>
+    <li><a href='#about'>FELHASZNÁLÓ</a></li>
+      <li><a href='#about'>About</a></li>
+      <li><a href='#foci'>Football</a></li>
+      <li><a href='#f1'>Formula 1</a></li>
+      <li><a href='#tenisz'>Tennis</a></li>
+      <li><a href='#'>Contact</a></li>
+      <li><a href='#'>Logout</a></li>
+    </ul>
+  </div>";}
+?>
+  
 
   <div class="section welcome" id="home">
-    <h1>Welcome to <span class="title" id="sportify">Sportify</span></h1><br>
+    <h1>Welcome to <span class="title" id="sportify">Sportify</span>
   </div>
 
-  <div class="section content login" id="login">
-    <div class="login-box" data-aos="zoom-in">
-      <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
-        <legend style="padding-bottom:10px; text-transform: uppercase;"><b>Login:</b></legend>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password</label>
-        <input style="margin-left:4px;" type="password" id="password" name="password"> <br>
-        <input type="submit" id="submitLogin" name="submitLogin" value="Login">
-      </form>
-      <p style="margin-top: 10px; text-decoration: none;">Dont have account yet?</p>
-      <a href="register.php">
-        <button id="submitRegister">Register</button>
-      </a>
-    </div>
-  </div>
+
   <div class="section content about" id="about">
     <div class="content-wrapper" data-aos="fade-in">
       <h3>Our goals</h3>
