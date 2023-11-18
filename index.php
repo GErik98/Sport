@@ -11,10 +11,12 @@ if (isset($_GET["logout"])) {
 }
 
 if (!empty($_SESSION["user"])) {
-  echo '<pre>';
+/*  echo '<pre>';
 print_r($_SESSION["user"]);
 echo '</pre>';
+
   echo "<p>Üdv {$_SESSION["user"]["username"]}</p>";
+*/
   if ($user["username"] = "admin") {
     header("admin.php");
   } else {
@@ -62,7 +64,20 @@ if(!isset($_SESSION["user"])) {
       <li><a href='#'>Contact</a></li>
       <li><a href='index.php?logout'>Logout</a></li>
     </ul>
-  </div>";} else {
+  </div>";}
+  elseif($_SESSION["user"]["role"] === "szervezo") {
+    echo "<div class='header'>
+      <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
+      <ul class='horizontal-nav'>
+      <li><a href='#about'>SZERVEZO</a></li>
+        <li><a href='#about'>About</a></li>
+        <li><a href='#foci'>Football</a></li>
+        <li><a href='#f1'>Formula 1</a></li>
+        <li><a href='#tenisz'>Tennis</a></li>
+        <li><a href='#'>Contact</a></li>
+        <li><a href='index.php?logout'>Logout</a></li>
+      </ul>
+    </div>";} else {
     echo "<div class='header'>
     <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
     <ul class='horizontal-nav'>
@@ -72,7 +87,7 @@ if(!isset($_SESSION["user"])) {
       <li><a href='#f1'>Formula 1</a></li>
       <li><a href='#tenisz'>Tennis</a></li>
       <li><a href='#'>Contact</a></li>
-      <li><a href='#'>Logout</a></li>
+      <li><a href='index.php?logout'>Logout</a></li>
     </ul>
   </div>";}
 ?>
