@@ -53,7 +53,7 @@ session_write_close();
 </head>
 <?php
 ?>
-<div class="section content login" id="login">
+<div class="section" id="login">
     <div class="login-box" data-aos="zoom-in">
       <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
         <legend style="padding-bottom:10px; text-transform: uppercase;"><b>Login:</b></legend>
@@ -80,6 +80,7 @@ session_write_close();
         <button>Home</button>
     </a>
   </div>
+</div>
 </body>
 
 </html>
