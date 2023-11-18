@@ -10,20 +10,21 @@ if (isset($_GET["logout"])) {
   setcookie("userId", "", time() - 1);
 }
 
+/*
 if (!empty($_SESSION["user"])) {
 /*  echo '<pre>';
 print_r($_SESSION["user"]);
 echo '</pre>';
 
   echo "<p>Üdv {$_SESSION["user"]["username"]}</p>";
-*/
+
   if ($user["username"] = "admin") {
-    header("admin.php");
+    header("Location: admin.php");
   } else {
-    header("profil.php");
+    header("Location: profil.php");
   }
 }
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -40,56 +41,13 @@ echo '</pre>';
 <body>
 <?php
 if(!isset($_SESSION["user"])) {
-    echo "<div class='header'>
-    <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
-    <ul class='horizontal-nav'>
-      <li><a href='#about'>About</a></li>
-      <li><a href='#foci'>Football</a></li>
-      <li><a href='#f1'>Formula 1</a></li>
-      <li><a href='#tenisz'>Tennis</a></li>
-      <li><a href='login.php'>Login</a></li>
-      <li><a href='register.php'>Register</a></li>
-      <li><a href='#'>Contact</a></li>
-    </ul>
-  </div>";
+  require('menus/basic_menu.php');;
 } elseif($_SESSION["user"]["role"] === "admin") {
-  echo "<div class='header'>
-    <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
-    <ul class='horizontal-nav'>
-    <li><a href='#about'>ADMIN</a></li>
-      <li><a href='#about'>About</a></li>
-      <li><a href='#foci'>Football</a></li>
-      <li><a href='#f1'>Formula 1</a></li>
-      <li><a href='#tenisz'>Tennis</a></li>
-      <li><a href='#'>Contact</a></li>
-      <li><a href='index.php?logout'>Logout</a></li>
-    </ul>
-  </div>";}
-  elseif($_SESSION["user"]["role"] === "szervezo") {
-    echo "<div class='header'>
-      <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
-      <ul class='horizontal-nav'>
-      <li><a href='#about'>SZERVEZO</a></li>
-        <li><a href='#about'>About</a></li>
-        <li><a href='#foci'>Football</a></li>
-        <li><a href='#f1'>Formula 1</a></li>
-        <li><a href='#tenisz'>Tennis</a></li>
-        <li><a href='#'>Contact</a></li>
-        <li><a href='index.php?logout'>Logout</a></li>
-      </ul>
-    </div>";} else {
-    echo "<div class='header'>
-    <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
-    <ul class='horizontal-nav'>
-    <li><a href='#about'>FELHASZNÁLÓ</a></li>
-      <li><a href='#about'>About</a></li>
-      <li><a href='#foci'>Football</a></li>
-      <li><a href='#f1'>Formula 1</a></li>
-      <li><a href='#tenisz'>Tennis</a></li>
-      <li><a href='#'>Contact</a></li>
-      <li><a href='index.php?logout'>Logout</a></li>
-    </ul>
-  </div>";}
+  require('menus/admin_menu.php');
+} elseif($_SESSION["user"]["role"] === "szervezo") {
+  require('menus/szervezo_menu.php');
+} else {
+  require('menus/user_menu.php');}
 ?>
   
 
@@ -164,7 +122,7 @@ if(!isset($_SESSION["user"])) {
   </div>
   <?php
   //echo '<br>asd'; ?>
-  <script src="loginscript.js"></script>
+  <!--<script src="loginscript.js"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
