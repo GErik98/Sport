@@ -118,7 +118,7 @@ a {
 
 /* Change color on hover for dropdown content links */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #5a5858;
   color: black;
 }
 
@@ -185,15 +185,27 @@ a {
   font-weight: bold;
 }
 
-/*___________________________________LOGIN__________________________________*/
+/*___________________________________LOGIN/REGISTER__________________________________*/
+
+label {
+  display: inline-block;
+  min-width: 150px;
+  text-align: justify;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+input {
+  margin-bottom: 10px;
+}
 
 .login-box {
+  width: 60%;
   font-size: 30px;
   color: white;
   align-items: center;
   padding: 20px 10px;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.842);
   position: relative;
 }
@@ -206,81 +218,63 @@ a {
   top: 0;
 }
 
-button,
-#submitLogin,
-#submitRegister {
-  appearance: none;
-  background-color: #fafbfc;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
-    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-  box-sizing: border-box;
-  color: #24292e;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  padding: 6px 16px;
-  position: relative;
-  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-  word-wrap: break-word;
-}
-
-button:hover,
-#submitLogin:hover,
-#submitRegister:hover {
-  background-color: #dcdddf;
-  text-decoration: none;
-  transition-duration: 0.1s;
-}
-
-button:disabled,
-#submitLogin:disabled,
-#submitRegister:disabled {
-  background-color: #fafbfc;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #959da5;
-  cursor: default;
-}
-
-button:active,
-#submitLogin:active,
-#submitRegister:active {
-  background-color: #edeff2;
-  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-  transition: none 0s;
-}
-
-button:focus,
-#submitLogin:focus,
-#submitRegister:focus {
-  outline: 1px transparent;
-}
-
-button:before,
-#submitLogin:before,
-#submitRegister:before {
-  display: none;
-}
-
-button:-webkit-details-marker,
-#submitLogin:-webkit-details-marker,
-#submitRegister:-webkit-details-marker {
-  display: none;
-}
-
 #sportify {
   animation: glowing 3s infinite; /* Adjust the duration as needed */
+}
+/*______________________CONTACT_____________________________________*/
+
+/* Contact Section Styles */
+
+#contact h2 {
+  color: #ffffff;
+}
+
+#contact p {
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Contact Form Styles */
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.contact-wrapper {
+  width: 60%;
+  text-align: start;
+  background-color: rgba(0, 0, 0, 0.678);
+  border-radius: 10px;
+  padding: 1.5rem;
+  z-index: 1;
 }
 
 /*______________________KEYFRAMES________________________________*/

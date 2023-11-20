@@ -10,21 +10,6 @@ if (isset($_GET["logout"])) {
   setcookie("userId", "", time() - 1);
 }
 
-/*
-if (!empty($_SESSION["user"])) {
-/*  echo '<pre>';
-print_r($_SESSION["user"]);
-echo '</pre>';
-
-  echo "<p>Üdv {$_SESSION["user"]["username"]}</p>";
-
-  if ($user["username"] = "admin") {
-    header("Location: admin.php");
-  } else {
-    header("Location: profil.php");
-  }
-}
-*/
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +19,8 @@ echo '</pre>';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <title>Sport</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -120,6 +105,24 @@ if(!isset($_SESSION["user"])) {
       </h4>
     </div>
   </div>
+  <div class="section " id="contact">
+    <div class="contact-wrapper" data-aos="fade-in">
+
+    <!-- Contact Form -->
+    <form action="process_contact.php" method="post">
+    <h2>Contact Us</h2>
+    <p>Feel free to reach out to us with any questions or feedback.</p>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit" id="submitContact" name="submitContact" value="Submit">Submit</button>
+    </form>
+    </div>
+  </div>
+
   <?php
   //echo '<br>asd'; ?>
   <!--<script src="loginscript.js"></script>-->

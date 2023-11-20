@@ -6,7 +6,7 @@
         <li><a href='#foci'>Football</a></li>
         <li><a href='#f1'>Formula 1</a></li>
         <li><a href='#tenisz'>Tennis</a></li>
-        <li><a href='#'>Contact</a></li>
+        <li><a href='#contact'>Contact</a></li>
         <li><a href='index.php?logout'>Logout</a></li>
       </ul>
     </div>

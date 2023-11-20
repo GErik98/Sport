@@ -49,10 +49,16 @@ session_write_close();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
-    <title>SportLogin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />    <title>SportLogin</title>
 </head>
-<?php
-?>
+<body>
+<div class='header'>
+    <a href='index.php'><h1 class='nav-title' id='logo'>Sportify</h1></a>
+    <ul class='horizontal-nav'>
+      <a href="index.php" class="icon"><i class="fas fa-home"></i></a>
+    </ul>
+    
+  </div>
 <div class="section" id="login">
     <div class="login-box" data-aos="zoom-in">
       <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
@@ -61,10 +67,9 @@ session_write_close();
         <input type="text" id="username" name="username"><br>
         <label for="password">Password</label>
         <input style="margin-left:4px;" type="password" id="password" name="password"> <br>
-        <input type="submit" id="submitLogin" name="submitLogin" value="Login">
+        <button type="submit" id="submitLogin" name="submitLogin" value="Login">Login</button>
       </form>
-      <p style="margin-top: 10px; text-decoration: none;">Dont have account yet?</p>
-
+      <p style="margin-top: 10px; font-size:20px;">Dont have an account yet?</p>
       <a href="register.php">
         <button>Register</button>
       </a><br>
@@ -76,9 +81,7 @@ session_write_close();
     echo $msg;
   } ?>
     </div>
-    <a href="index.php">
-        <button>Home</button>
-    </a>
+
   </div>
 </div>
 </body>
