@@ -2,6 +2,7 @@
 // load_content.php
 require_once("../dbconnect.php");
 
+$action = $_GET['action'];
 // Retrieve users
 $sqlUsers = "SELECT id, username FROM felhasznalo";
 $queryUsers = $connDB->query($sqlUsers);
@@ -11,7 +12,11 @@ $users = $queryUsers->fetchAll(PDO::FETCH_ASSOC);
 $sqlEvents = "SELECT id, nev, sportag, datetime FROM rendezveny";
 $queryEvents = $connDB->query($sqlEvents);
 $events = $queryEvents->fetchAll(PDO::FETCH_ASSOC);
-$action = $_GET['action'];
+
+// Retrive contacts
+$sqlContacts = "SELECT id, name, email, message, submission_date FROM contacts";
+$queryContacts = $connDB->query($sqlContacts);
+$contacts = $queryContacts->fetchAll(PDO::FETCH_ASSOC);
 
 if ($action === 'user_management') {
     // Simulate loading user management content
@@ -60,7 +65,21 @@ if ($action === 'user_management') {
     <?php endforeach;
 
     $loadedContent = ob_get_clean(); // Get the output buffer and clean it
-} //elseif ($action === 'contact_management'){}
+} elseif ($action === 'contact_management'){
+    ob_start();
+    ?>
+    <h2>Messages</h2>
+    <?php
+    foreach ($contacts as $contact) :
+        ?>
+        <h4><?php echo ucfirst($contact["name"]); ?>:</h4>
+<ul>
+        <li><?php echo $contact["message"]; ?> --- <?php echo "date:".$contact["submission_date"]; ?></li>
+        <?php endforeach; ?>
+</ul>
+<?php
+$loadedContent = ob_get_clean();
+}
 
 // Return the content
 echo $loadedContent;
