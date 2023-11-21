@@ -1,10 +1,21 @@
+<!-- load_content.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page</title>
+    <!-- Include jQuery on this specific page -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="dashboard.js"></script>
+</head>
 <?php
 // load_content.php
 require_once("../dbconnect.php");
 
 $action = $_GET['action'];
 // Retrieve users
-$sqlUsers = "SELECT id, username FROM felhasznalo";
+$sqlUsers = "SELECT id, username, role FROM felhasznalo";
 $queryUsers = $connDB->query($sqlUsers);
 $users = $queryUsers->fetchAll(PDO::FETCH_ASSOC);
 
@@ -24,9 +35,11 @@ if ($action === 'user_management') {
     ?>
     <h2>Users:</h2>
     <ul>
+        <p>Változatáskor minden adatot ki kell tölteni!</p> <!--különben csak nulláza a ki nem töltött adatokat xd-->
+        <li>Név: | Szerep: </li>
         <?php foreach ($users as $user) : ?>
             <li>
-    <?php echo $user["username"]; ?>
+    <?php echo ucfirst($user["username"])."\n"; echo "| ".$user["role"]; ?>
     <span class="management-options">
     <a href="#" class="management-option" data-action="modify" data-userid="<?php echo $user["id"]; ?>">
         <i class="fas fa-edit"></i> Modify
@@ -83,4 +96,5 @@ $loadedContent = ob_get_clean();
 
 // Return the content
 echo $loadedContent;
+
 ?>
