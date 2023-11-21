@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
   <title>Sport</title>
 </head>
-
 <body>
   <div class="header">
     <h1 class="nav-title" id="logo">Sportify</h1>
@@ -24,7 +22,6 @@
   <div class="section welcome" id="home">
     <h1>Welcome to <span class="title" id="sportify">Sportify</span></h1>
   </div>
-
   <div class="section about" id="about">
     <div class="content-wrapper">
       <h3>Our goals</h3>
@@ -35,7 +32,6 @@
         et aliquam similique quia suscipit delectus, no</h4>
     </div>
   </div>
-
   <div class="section content foci" id="foci">
     <div class="content-wrapper">
       <h3>Foci</h3>
@@ -86,7 +82,5 @@
   <?php
   //echo '<br>asd'; ?>
 </body>
-
 <!--<script src="animations.js"></script>-->
-
 </html>
