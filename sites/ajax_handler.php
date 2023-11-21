@@ -107,15 +107,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error = "Adatbázis módosítás hiba: " . $e->getMessage();
             }
         }
-        
-    
-     
-} elseif ($action === 'delete') {
-    // Your code for the 'delete' action
-    echo '<h3>Delete User Form</h3>';
-    // Add form elements and processing logic
-} else {
-    // Handle unknown action or provide an error message
-    echo '<p>Error: Unknown action.</p>';
+    if ($action === 'delete'){
+        $userId = isset($_POST['userId']) ? $_POST['userId'] : null;
+        echo '<h3>Delete User Form</h3>';
+        try{
+            $deleteQuery = $connDB->prepare("DELETE FROM felhasznalo WHERE id = :userId");
+            $deleteQuery->bindParam(':userId',$userId, PDO::PARAM_INT);
+            $deleteQuery->execute();
+
+            if($deleteQuery->rowCount() > 0){
+                echo '<p>User deleted successfully for User ID: ' . $userId . '</p>';
+            } else {
+                echo '<p>User deletion failed for User ID: ' . $userId . '</p>';
+            }
+        } catch (PDOException $e){
+            $error = "Adatbázis törlési hiba: ".$e->getMessage();
+        }
+    }
 }
 ?>
