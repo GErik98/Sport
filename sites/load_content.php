@@ -60,7 +60,7 @@ if ($action === 'user_management') {
     <?php endforeach;
 
     $loadedContent = ob_get_clean(); // Get the output buffer and clean it
-}
+} //elseif ($action === 'contact_management'){}
 
 // Return the content
 echo $loadedContent;

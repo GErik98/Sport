@@ -186,6 +186,14 @@ a {
 }
 
 /*___________________________________LOGIN/REGISTER__________________________________*/
+#roleSelect {
+  display: block;
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
 label {
   display: inline-block;

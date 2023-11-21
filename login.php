@@ -32,7 +32,15 @@ if (isset($_POST["submitLogin"]) && !empty($connDB)) {
       "password" => $user["password"],
       "role" => $user["role"],
     );
-    header("location:index.php");
+    switch($_SESSION["user"]["role"]){
+      case "admin": header("location:sites/admin.php");
+      break;
+      case "user": header("location:sites/user.php");
+      break;
+      case "szervezo": header("location:sites/szervezo.php");
+      break;
+    }
+   // header("location:index.php");
   } catch (PDOException $e) {
     $error = "Adatbázis olvasási hiba: " . $e->getMessage();
   } catch (LoginException $e) {

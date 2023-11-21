@@ -8,6 +8,7 @@ class LoginException extends Exception {}
 
 if(isset($_POST["submitReg"]) && !empty($connDB)){
     try {
+        $role = trim($_POST["roleSelect"]);
         $username = trim($_POST["username"]);
         $password = trim($_POST["password"]);
         if($password != trim($_POST["password2"])){
@@ -24,8 +25,9 @@ if(isset($_POST["submitReg"]) && !empty($connDB)){
           throw new LoginException("A felhasználónév már létezik");
         }
 
-        $sqlReg = "INSERT INTO felhasznalo (username, password) values (:username, :password)";
+        $sqlReg = "INSERT INTO felhasznalo (username, password, role) values (:username, :password, :role )";
         $queryReg = $connDB->prepare($sqlReg);
+        $queryReg ->bindParam(":role", $role, PDO::PARAM_STR);
         $queryReg->bindParam(":username", $username, PDO::PARAM_STR);
         $pwHashed = password_hash($password, PASSWORD_DEFAULT);
         $queryReg->bindParam(":password", $pwHashed, PDO::PARAM_STR);
@@ -67,6 +69,11 @@ session_write_close();
     <div class="login-box" data-aos="zoom-in">
       <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
         <legend style="padding-bottom:10px; text-transform: uppercase;"><b>Register:</b></legend>
+        <label for="role">Role:</label>
+        <select id="roleSelect" name="roleSelect">
+          <option value ="user">Játékos</option>
+          <option value ="szervezo">Szervező</option>
+        </select><br>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username"><br>
         <label for="password">Password:</label>
