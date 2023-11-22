@@ -20,7 +20,7 @@ $queryUsers = $connDB->query($sqlUsers);
 $users = $queryUsers->fetchAll(PDO::FETCH_ASSOC);
 
 // Retrieve events
-$sqlEvents = "SELECT id, nev, sportag, datetime FROM rendezveny";
+$sqlEvents = "SELECT id, nev, sportag, datetime FROM esemeny";
 $queryEvents = $connDB->query($sqlEvents);
 $events = $queryEvents->fetchAll(PDO::FETCH_ASSOC);
 
@@ -61,6 +61,7 @@ if ($action === 'user_management') {
 } elseif ($action === 'event_management') {
     ob_start(); // Start output buffering
     ?>
+    <button type='submit' id='submitNew' value='submitNew'>Add Event</button>
     <h2>Events:</h2>
     <h3>Categories</h3>
     <?php

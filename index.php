@@ -57,25 +57,12 @@ if(!isset($_SESSION["user"])) {
         facere illo, maxime placeat suscipit excepturi quas ipsum commodi. Sapiente molestias accusantium asperiores
         animi
         et aliquam similique quia suscipit delectus, no</h4>
+
     </div>
   </div>
   <div class="section content foci" id="foci">
     <div class="content-wrapper" data-aos="fade-in">
-      <h3>Foci</h3>
-      <h4>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab cupiditate quidem blanditiis quam! Blanditiis
-        odit,
-        unde aspernatur molestiae rerum corrupti similique modi, impedit corporis iure natus adipisci id quod hic
-        dicta
-        facere illo, maxime placeat suscipit excepturi quas ipsum commodi. Sapiente molestias accusantium asperiores
-        animi
-        et aliquam similique quia suscipit delectus, nostrum in aut sint deleniti magni neque labore ipsum fuga rem
-        autem
-        molestiae consequatur commodi illum veniam. Non assumenda recusandae cumque obcaecati suscipit hic quas quis,
-        ut
-        temporibus provident cupiditate nihil dolorum eligendi molestias minima natus veritatis doloremque odit,
-        praesentium nesciunt, ipsum soluta corporis laborum. Odit provident explicabo iure?
-      </h4>
+    <?php include('merkozes.php');?>
     </div>
   </div>
   <div class="section content f1" id="f1">

@@ -37,7 +37,7 @@ li {
   margin-bottom: 10px;
 }
 button {
-  background-color: #21262c;
+  background-color: #3b74b9;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -46,7 +46,7 @@ button {
 }
 
 button:hover {
-  background-color: #384552;
+  background-color: #55626e;
   cursor: pointer;
 }
 span a {
@@ -62,7 +62,7 @@ span a:hover {
 }
 
 .management-options {
-  display: contents;
+  display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 5px;
 }
