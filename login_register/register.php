@@ -2,7 +2,7 @@
 session_start();
 $error = "";
 $msg = "";
-require_once("dbconnect.php");
+require_once("../dbconnect.php");
 
 class LoginException extends Exception {}
 
@@ -34,7 +34,7 @@ if(isset($_POST["submitReg"]) && !empty($connDB)){
         $queryReg->execute();
 
         $msg = "Sikeres regisztráció";
-        header("Location:login.php");  
+        header("Location:../login_register/login.php");  
     }   catch(PDOException $e) {
         $error = "Adatbázis mentési hiba: ".$e->getMessage();
     }   catch(LoginException $e) {
@@ -53,15 +53,15 @@ session_write_close();
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <title>SportReg</title>
 </head>
 <body>
 <div class='header'>
-    <a href='index.php'><h1 class='nav-title' id='logo'>Sportify</h1></a>
+    <a href='../index.php'><h1 class='nav-title' id='logo'>Sportify</h1></a>
     <ul class='horizontal-nav'>
-      <a href="index.php" class="icon"><i class="fas fa-home"></i></a>
+      <a href="../index.php" class="icon"><i class="fas fa-home"></i></a>
     </ul>
     
   </div>

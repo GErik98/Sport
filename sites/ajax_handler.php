@@ -77,7 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             if ($updateQuery->rowCount() > 0) {
                 echo '<p>User information updated successfully for User ID: ' . $userId . '</p>';
-                header('location:admin.php');
+                $_SESSION["user"]["username"] = $newUsername;
+                $_SESSION["user"]["role"] = $newRole;
+                header('location:profile.php');
             } else {
                 echo '<p>User information update failed for User ID: ' . $userId . '</p>';
             }

@@ -62,7 +62,7 @@ span a:hover {
 }
 
 .management-options {
-  display: grid;
+  display: contents;
   grid-template-columns: repeat(3, auto);
   gap: 5px;
 }

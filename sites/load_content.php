@@ -11,11 +11,11 @@
 </head>
 <?php
 // load_content.php
+session_start();
 require_once("../dbconnect.php");
-
 $action = $_GET['action'];
 // Retrieve users
-$sqlUsers = "SELECT id, username, role FROM felhasznalo";
+$sqlUsers = "SELECT id, username, role FROM felhasznalo WHERE role <> 'admin'";
 $queryUsers = $connDB->query($sqlUsers);
 $users = $queryUsers->fetchAll(PDO::FETCH_ASSOC);
 
@@ -92,6 +92,35 @@ if ($action === 'user_management') {
 </ul>
 <?php
 $loadedContent = ob_get_clean();
+} elseif ($action === 'profile_settings') {
+    ob_start();
+    $userId = $_SESSION['user']['id'];
+
+    $queryUser = $connDB->prepare('SELECT id, username, password FROM felhasznalo WHERE id = :userId');
+    $queryUser->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $queryUser->execute();
+
+    $userData = $queryUser->fetch(PDO::FETCH_ASSOC);
+
+    if ($userData) {?>
+        <?php echo ucfirst($userData["username"])."\n"; echo "| ".$userData["id"]; ?>
+        <span class="management-options">
+        <a href="#" class="management-option" data-action="modify" data-userid="<?php echo $userData["id"]; ?>">
+            <i class="fas fa-edit"></i> Modify
+        </a>
+            <a href="#" class="management-option" data-action="ban" data-userid="<?php echo $userData["id"]; ?>">
+                <i class="fas fa-ban"></i> Ban
+            </a>
+            <a href="#" class="management-option" data-action="delete" data-userid="<?php echo $userData["id"]; ?>">
+                <i class="fas fa-trash"></i> Delete
+            </a>
+        </span>
+    <?php
+    } else {
+        echo 'User not found.';
+    }
+
+    $loadedContent = ob_get_clean();
 }
 
 // Return the content

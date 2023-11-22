@@ -25,6 +25,7 @@ $(document).ready(function() {
             success: function(response) {
                 // Update the content container with the response
                 $('#user-action-container').html(response);
+                location.reload();
             },
             error: function(xhr, status, error) {
                 console.error('AJAX Error:', status, error);
@@ -47,9 +48,16 @@ $(document).ready(function() {
             url: 'ajax_handler.php',
             type: 'POST',
             data: formData,
+            dataType: 'json', // Specify that the expected response is JSON
             success: function(response) {
-                // Update the content container with the response
-                $('#user-action-container').html(response);
+                // Check if the update was successful
+                if (response.success) {
+                    // Update the content container with the success message
+                    $('#user-action-container').html('<p>' + response.message + '</p>');
+                } else {
+                    // Update the content container with the error message
+                    $('#user-action-container').html('<p class="error">' + response.message + '</p>');
+                }
             },
             error: function(xhr, status, error) {
                 console.error('AJAX Error:', status, error);

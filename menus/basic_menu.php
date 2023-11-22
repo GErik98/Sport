@@ -5,8 +5,8 @@
       <li><a href='#foci'>Design</a></li>
       <li><a href='#f1'>Ease of use</a></li>
       <li><a href='#tenisz'>Try it</a></li>
-      <li><a href='login.php'>Login</a></li>
-      <li><a href='register.php'>Register</a></li>
+      <li><a href='login_register/login.php'>Login</a></li>
+      <li><a href='login_register/register.php'>Register</a></li>
       <li><a href='#contact'>Contact</a></li>
     </ul>
   </div>

@@ -1,15 +1,3 @@
-<?php
-session_start();
-
-// Check if the user is logged in and is an admin
-if (!isset($_SESSION["user"]) || $_SESSION["user"]["role"] !== "user") {
-    header("Location: index.php"); // Redirect to the main page if not logged in as an admin
-    exit();
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +25,7 @@ if (!isset($_SESSION["user"]) || $_SESSION["user"]["role"] !== "user") {
 </ul>
 </div>
 <div class="container">
-    <h1>Welcome, <?php echo $_SESSION["user"]["username"];echo  $_SESSION["user"]["id"]; ?>!</h1>
+    <h1>Welcome, <?php echo ucfirst($_SESSION["user"]["role"]); ?>!</h1>
     <div id="content-container"></div>
     <div id="user-action-container"></div>
 </body>
