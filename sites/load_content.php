@@ -31,16 +31,20 @@ $contacts = $queryContacts->fetchAll(PDO::FETCH_ASSOC);
 
 if ($action === 'user_management') {
     // Simulate loading user management content
-    ob_start(); // Start output buffering
     ?>
     <h2>Users:</h2>
+    <p><b>Változatáskor minden adatot ki kell tölteni!</b></p> <!--különben csak nulláza a ki nem töltött adatokat xd-->
+    Név: | Szerep: 
+    <?php
+    ob_start(); // Start output buffering
+    ?>
     <ul>
-        <p>Változatáskor minden adatot ki kell tölteni!</p> <!--különben csak nulláza a ki nem töltött adatokat xd-->
-        <li>Név: | Szerep: </li>
         <?php foreach ($users as $user) : ?>
-            <li>
+            <li class="user-row">
+            <div class ='user-info'>
     <?php echo ucfirst($user["username"])."\n"; echo "| ".$user["role"]; ?>
-    <span class="management-options">
+    </div>
+    <div class="management-options">
     <a href="#" class="management-option" data-action="modify" data-userid="<?php echo $user["id"]; ?>">
         <i class="fas fa-edit"></i> Modify
     </a>
@@ -50,22 +54,22 @@ if ($action === 'user_management') {
         <a href="#" class="management-option" data-action="delete" data-userid="<?php echo $user["id"]; ?>">
             <i class="fas fa-trash"></i> Delete
         </a>
-    </span>
+        </div>
 </li>
         <?php endforeach; ?>
     </ul>
     <?php
-    $loadedContent = ob_get_clean(); // Get the output buffer and clean it
+    $loadedContent = "<div class='content-container'>".ob_get_clean()."</div>  "; // Get the output buffer and clean it
 
     // Now $loadedContent contains the entire HTML block with management options
 } elseif ($action === 'event_management') {
+    if($_SESSION["user"]["role"]!== 'user'){
+    ?>
+    <a href="#" class="management-option" data-action="addEvent"><button>Add Event</button></a>
+    <h2>Events:</h2>
+    <?php
     ob_start(); // Start output buffering
     ?>
-    <span class="management-options">
-    <a href="#" class="management-option" data-action="addEvent"><button>Add Event</button></a>
-    </span>
-    <h2>Events:</h2>
-    <h3>Categories</h3>
     <?php
     $categories = ["foci", "f1", "tenisz"];
     foreach ($categories as $category) :
@@ -78,9 +82,33 @@ if ($action === 'user_management') {
                 <?php endif; ?>
             <?php endforeach; ?>
         </ul>
+         
     <?php endforeach;
 
-    $loadedContent = ob_get_clean(); // Get the output buffer and clean it
+    $loadedContent = "<div class='content-container'>".ob_get_clean()."</div>  "; // Get the output buffer and clean it
+} else {
+    ?>
+    <h2>Events:</h2>
+    <?php
+    ob_start(); // Start output buffering
+    ?>
+    <?php
+    $categories = ["foci", "f1", "tenisz"];
+    foreach ($categories as $category) :
+    ?>
+        <h4><?php echo ucfirst($category); ?>:</h4>
+        <ul>
+            <?php foreach ($events as $event) : ?>
+                <?php if ($event["sportag"] === $category) : ?>
+                    <li><?php echo $event["nev"]; ?> - <?php echo $event["datetime"]; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+         
+    <?php endforeach;
+
+    $loadedContent = "<div class='content-container'>".ob_get_clean()."</div>  "; // Get the output buffer and clean it
+}
 } elseif ($action === 'contact_management'){
     ob_start();
     ?>
@@ -111,9 +139,6 @@ $loadedContent = ob_get_clean();
         <a href="#" class="management-option" data-action="modify" data-userid="<?php echo $userData["id"]; ?>">
             <i class="fas fa-edit"></i> Modify
         </a>
-            <a href="#" class="management-option" data-action="ban" data-userid="<?php echo $userData["id"]; ?>">
-                <i class="fas fa-ban"></i> Ban
-            </a>
             <a href="#" class="management-option" data-action="delete" data-userid="<?php echo $userData["id"]; ?>">
                 <i class="fas fa-trash"></i> Delete
             </a>
