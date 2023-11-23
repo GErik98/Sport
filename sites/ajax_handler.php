@@ -13,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Your code to load modification form or perform modifications
         ?>
         <div class="admin_panels">
-            <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+            <form id="modifyForm" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
                 <fieldset>
                     <legend>Beállítások</legend>
                     <input type="hidden" name="userId" value="<?php echo $userId; ?>">
                     <label for="username">Felhasználónév megváltoztatása</label>
                     <input type="text" id="username" name="username"><br>
-                    <label for="username">Jelszó megváltoztatása</label>
+                    <label for="password">Jelszó megváltoztatása</label>
                     <input type="text" id="password" name="password"><br>
                     <label for="username">Szerep megváltoztatása</label>
                     <select id="roleSelect" name="roleSelect">
@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php
     }
     if (isset($_POST['submitSet'])) {
+        echo '<h3>asdasd</h3>';
         try {
             $userId = isset($_POST['userId']) ? $_POST['userId'] : null;
     
@@ -77,8 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             if ($updateQuery->rowCount() > 0) {
                 echo '<p>User information updated successfully for User ID: ' . $userId . '</p>';
-                $_SESSION["user"]["username"] = $newUsername;
-                $_SESSION["user"]["role"] = $newRole;
                 header('location:profile.php');
             } else {
                 echo '<p>User information update failed for User ID: ' . $userId . '</p>';
@@ -126,5 +125,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "Adatbázis törlési hiba: ".$e->getMessage();
         }
     }
+
+    if($action === 'addEvent'){
+        ?>
+        <div class="admin_panels">
+            <form id="eventForm" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+                <fieldset>
+                    <legend>Esemény hozzáadása</legend>
+                    <label for="eventName">Esemény neve</label>
+                    <input type="text" id="eventName" name="eventName" required><br>
+                    <label for="sportAg">Sportág</label>
+                    <select id="eventSelect" name="eventSelect" required>
+                    <option value="" disabled selected>-Válasszon-</option>
+                        <option value="foci">Labdarúgás</option>
+                        <option value="tenisz">Futás</option>
+                        <option value="f1">Forma 1</option>
+                    </select><br>
+                    <label for="tipus">Mérzkőzés típusa</label>
+                    <select id="typeSelect" name="typeSelect" required>
+                    <option value="" disabled selected>-Válasszon-</option>
+                        <option value="merkozes">Mérkőzéses</option>
+                        <option value="futam">Futam</option>
+                    </select><br>
+                    <label for="date">Dátum</label>
+                    <input type="datetime-local" id="dateTime" name="dateTime" required>
+                    <button type="submit" id="submitEvent" name="submitEvent" value="submitEvent">Rendben</button>
+                </fieldset>
+            </form>
+        </div>
+        <?php
+        }
+        if (isset($_POST['submitEvent'])){
+            try{
+            $eventName = $_POST['eventName'];
+            $sportAg = $_POST['eventSelect'];
+            $merkozes = $_POST['typeSelect'];
+            $datum = $_POST['dateTime'];
+    
+            $stmt = "INSERT INTO esemeny (nev, sportag, tipus, datetime) VALUES (:eventName, :sportAg, :merkozes, :datum)";
+            $eventInsert = $connDB->prepare($stmt);
+            $eventInsert -> bindParam(":eventName",$eventName, PDO::PARAM_STR);
+            $eventInsert -> bindParam(":sportAg",$sportAg, PDO::PARAM_STR);
+            $eventInsert -> bindParam(":merkozes",$merkozes, PDO::PARAM_STR);
+            $eventInsert -> bindParam(":datum",$datum, PDO::PARAM_STR);
+
+            $eventInsert->execute();
+
+            if($eventInsert->rowCount() > 0){
+                echo '<script>window.location.href = "profile.php?message=Event added successfully!";</script>';
+            } else {
+                echo '<p>Failed attempt.</p>';
+            } 
+            }catch (PDOException $e){
+                $error='Adatbázis hiba: '.$e->getMessage();
+        }
+    }
 }
+
 ?>

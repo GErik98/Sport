@@ -25,7 +25,6 @@ $(document).ready(function() {
             success: function(response) {
                 // Update the content container with the response
                 $('#user-action-container').html(response);
-                location.reload();
             },
             error: function(xhr, status, error) {
                 console.error('AJAX Error:', status, error);
@@ -35,20 +34,22 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    // Attach a click event handler to the submit button
-    $('#submitSet').on('click', function() {
-        // Get the form data
-        var formData = $('#modifyForm').serializeArray();
-
-        // Add the action to the form data
-        formData.push({ name: 'action', value: 'modify' });
-
+    // Attach a click event handler to the submit buttons
+    $('#submitSet','#submitEvent').on('click', function() {
+        // Get the form data from the modify form
+       if ($(this).attr('id') === 'submitSet') {
+            formData = $('#modifyForm').serializeArray();
+            formData.push({ name: 'action', value: 'modify' });
+        } else if ($(this).attr('id') === 'submitEvent') {
+            formData = $('#eventForm').serializeArray();
+            formData.push({ name: 'action', value: 'submitEvent' });
+        }
         // Perform an AJAX request
         $.ajax({
             url: 'ajax_handler.php',
             type: 'POST',
             data: formData,
-            dataType: 'json', // Specify that the expected response is JSON
+            dataType: 'json',
             success: function(response) {
                 // Check if the update was successful
                 if (response.success) {

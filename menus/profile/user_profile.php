@@ -26,7 +26,13 @@
 </div>
 <div class="container">
     <h1>Welcome, <?php echo ucfirst($_SESSION["user"]["role"]); ?>!</h1>
-    <div id="content-container"></div>
+    <div id="content-container">
+    <?php
+    if (isset($_GET['message'])) {
+    echo '<p>' . htmlspecialchars($_GET['message']) . '</p>';
+    }
+    ?>
+    </div>
     <div id="user-action-container"></div>
 </body>
 

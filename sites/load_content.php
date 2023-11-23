@@ -61,7 +61,9 @@ if ($action === 'user_management') {
 } elseif ($action === 'event_management') {
     ob_start(); // Start output buffering
     ?>
-    <button type='submit' id='submitNew' value='submitNew'>Add Event</button>
+    <span class="management-options">
+    <a href="#" class="management-option" data-action="addEvent"><button>Add Event</button></a>
+    </span>
     <h2>Events:</h2>
     <h3>Categories</h3>
     <?php
