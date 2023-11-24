@@ -14,25 +14,28 @@ if (isset($_GET["logout"])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <title>Sport</title>
+  <script src="./js/hamburgermenu.js"></script>
 </head>
+
 <body>
-<?php
-if(!isset($_SESSION["user"])) {
-  require('menus/basic_menu.php');;
-} elseif($_SESSION["user"]["role"] === "admin") {
-  require('menus/admin_menu.php');
-} elseif($_SESSION["user"]["role"] === "szervezo") {
-  require('menus/szervezo_menu.php');
-} else {
-  require('menus/user_menu.php');}
-?>
-  
+  <?php
+  if (!isset($_SESSION["user"])) {
+    require('menus/basic_menu.php');
+  } elseif ($_SESSION["user"]["role"] === "admin") {
+    require('menus/admin_menu.php');
+  } elseif ($_SESSION["user"]["role"] === "szervezo") {
+    require('menus/szervezo_menu.php');
+  } else {
+    require('menus/user_menu.php');
+  }
+  ?>
 
   <div class="section welcome" id="home">
     <h1>Welcome to <span class="title" id="sportify">Sportify</span>
@@ -104,10 +107,10 @@ if(!isset($_SESSION["user"])) {
   <div class="section " id="contact">
     <div class="contact-wrapper" data-aos="fade-in">
 
-    <!-- Contact Form -->
-    <form action="process_contact.php" method="post">
-    <h2>Contact Us</h2>
-    <p>Feel free to reach out to us with any questions or feedback.</p>
+      <!-- Contact Form -->
+      <form action="process_contact.php" method="post">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out to us with any questions or feedback.</p>
         <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" required>
         <label for="email">Your Email:</label>
@@ -115,7 +118,7 @@ if(!isset($_SESSION["user"])) {
         <label for="message">Your Message:</label>
         <textarea id="message" name="message" rows="4" required></textarea>
         <button type="submit" id="submitContact" name="submitContact" value="Submit">Submit</button>
-    </form>
+      </form>
     </div>
   </div>
 
@@ -126,7 +129,10 @@ if(!isset($_SESSION["user"])) {
   <script>
     AOS.init();
   </script>
+  
 </body>
+
+
 
 <!--<script src="animations.js"></script>-->
 

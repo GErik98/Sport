@@ -1,291 +1,248 @@
 html,
 body {
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background: url("img/Sport_bg.jpg") center/cover no-repeat fixed;
-  height: 100vh;
-  font-family: "Open Sans", sans-serif;
+    background: url("img/Sport_bg.jpg") center/cover no-repeat fixed;
+    height: 100vh;
+    font-family: "Open Sans", sans-serif;
 }
 h1,
 h2,
 h3,
 p {
-  color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 a {
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }
 
 /*___________________________HEADER, NAVBAR, "OLDAL TETEJE"_________________________________________*/
 
 .header {
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.678);
-  padding: 10px;
-  color: white;
-  width: 100%;
-  position: fixed;
-  z-index: 1000;
-}
-.nav-title {
-  margin: 0; /* Remove default margin for h1 */
-  float: left;
-  margin-left: 1em;
-  text-shadow: rgb(255, 255, 255) 1px 1px 6px;
+    overflow: hidden;
+    background-color: #333;
 }
 
-.horizontal-nav {
-  list-style-type: none;
-  padding: 0;
-  margin: 0; /* Remove default margin for ul */
-  display: inline-flex;
-  margin-right: 1em;
-  font-family: "Open Sans", sans-serif;
+.header a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
-.horizontal-nav li {
-  display: inline-block;
-  margin-right: 15px;
-  transition: transform 0.3s ease; /* Add a transition for the transform property */
+.header a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-.horizontal-nav li:hover {
-  transform: scale(1.1); /* Apply a scale transformation on hover */
+.header a.active {
+    background-color: #04aa6d;
+    color: white;
 }
 
-.horizontal-nav li:hover a {
-  border-width: 5px;
-  border-color: white;
-  color: #ddd; /* Change color on hover */
+.header .icon {
+    display: none;
 }
 
-.horizontal-nav a {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-size: 18px;
-  margin: 0;
+@media screen and (max-width: 700px) {
+    .header a:not(:first-child) {
+        display: none;
+    }
+    .header a.icon {
+        float: right;
+        display: block;
+    }
 }
 
-/* Style for the dropdown button */
-.dropbtn {
-  color: white;
-  padding: 14px;
-  font-size: 16px;
-  border: none;
-}
-
-/* Style for the dropdown container */
-.dropdown {
-  display: inline-block;
-  position: relative; /* Add relative positioning to establish a stacking context */
-}
-
-/* Style for the dropdown content */
-.dropdown-content {
-  visibility: hidden; /* Start with visibility set to hidden */
-  position: absolute;
-  max-width: min-content;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  color: rgb(255, 255, 255);
-  background-color: rgba(0, 0, 0, 0.678);
-  z-index: 1;
-  opacity: 0; /* Start with opacity set to 0 */
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Add a transition effect on opacity and visibility */
-}
-
-/* Show the dropdown content when hovering over the dropdown button */
-.dropdown:hover .dropdown-content {
-  visibility: visible; /* Set visibility to visible on hover */
-  opacity: 1; /* Set opacity to 1 on hover */
-  transition-delay: 0s; /* Remove the transition delay for visibility */
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 12px 16px;
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-}
-
-/* Change color on hover for dropdown content links */
-.dropdown-content a:hover {
-  background-color: #5a5858;
-  color: black;
+@media screen and (max-width: 700px) {
+    .header.responsive {
+        position: relative;
+    }
+    .header.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .header.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
 }
 
 /*_____________________________________SECTIONS, CONTENTS, "OLDAL TARTALMA"____________________________________*/
 
 .section {
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.678);
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.678);
 }
 .content-wrapper {
-  width: 60%;
-  text-align: start;
-  background-color: rgba(0, 0, 0, 0.678);
-  border-radius: 10px;
-  padding: 1.5rem;
-  z-index: 1;
+    width: 60%;
+    text-align: start;
+    background-color: rgba(0, 0, 0, 0.678);
+    border-radius: 10px;
+    padding: 1.5rem;
+    z-index: 1;
 }
 .welcome {
-  font-size: 50px;
-  background-color: rgba(0, 0, 0, 0.678);
-  padding: 20px;
+    font-size: 50px;
+    background-color: rgba(0, 0, 0, 0.678);
+    padding: 20px;
 }
 
 .title {
-  transition: text-shadow 0.3s ease; /* Add transition for smooth effect */
+    transition: text-shadow 0.3s ease; /* Add transition for smooth effect */
 }
 
 .title:hover {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Add a glow effect on hover */
-  cursor: default;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Add a glow effect on hover */
+    cursor: default;
 }
 
 .content {
-  text-align: center;
+    text-align: center;
 }
 .login {
-  background: url("img/football_field.jpg") center/cover no-repeat;
+    background: url("img/football_field.jpg") center/cover no-repeat;
 }
 
 .foci {
-  background: url("img/football_bg.jpg") center/cover no-repeat;
+    background: url("img/football_bg.jpg") center/cover no-repeat;
 }
 .f1 {
-  background: url("img/f1_bg.jpg") center/cover no-repeat;
+    background: url("img/f1_bg.jpg") center/cover no-repeat;
 }
 .tenisz {
-  background: url("img/tennis_bg.jpg") center/cover no-repeat;
+    background: url("img/tennis_bg.jpg") center/cover no-repeat;
 }
 .content-wrapper h3 {
-  color: white;
-  font-size: 2em; /* Adjust the font size as needed */
-  margin-bottom: 10px; /* Add some margin to separate from the content */
+    color: white;
+    font-size: 2em; /* Adjust the font size as needed */
+    margin-bottom: 10px; /* Add some margin to separate from the content */
 }
 
 .content-wrapper h4 {
-  color: white;
-  font-size: 1.2em; /* Adjust the font size as needed */
-  font-weight: bold;
+    color: white;
+    font-size: 1.2em; /* Adjust the font size as needed */
+    font-weight: bold;
 }
 
 /*___________________________________LOGIN/REGISTER__________________________________*/
 
 label {
-  display: inline-block;
-  min-width: 150px;
-  text-align: justify;
-  margin-right: 10px;
-  font-size: 20px;
+    display: inline-block;
+    min-width: 150px;
+    text-align: justify;
+    margin-right: 10px;
+    font-size: 20px;
 }
 
 input {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .login-box {
-  width: 60%;
-  font-size: 30px;
-  color: white;
-  align-items: center;
-  padding: 20px 10px;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.842);
-  position: relative;
+    width: 60%;
+    font-size: 30px;
+    color: white;
+    align-items: center;
+    padding: 20px 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.842);
+    position: relative;
 }
 
 #login-h2 {
-  text-align: center;
-  margin: auto;
-  display: inline-block;
-  position: absolute;
-  top: 0;
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+    position: absolute;
+    top: 0;
 }
 
 #sportify {
-  animation: glowing 3s infinite; /* Adjust the duration as needed */
+    animation: glowing 3s infinite; /* Adjust the duration as needed */
 }
 /*______________________CONTACT_____________________________________*/
 
 /* Contact Section Styles */
 
 #contact h2 {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 #contact p {
-  color: #ffffff;
-  margin-bottom: 20px;
+    color: #ffffff;
+    margin-bottom: 20px;
 }
 
 /* Contact Form Styles */
 form {
-  max-width: 500px;
-  margin: 0 auto;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 label {
-  display: block;
-  margin-bottom: 8px;
-  color: #ffffff;
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
 }
 
 input,
 textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .contact-wrapper {
-  width: 60%;
-  text-align: start;
-  background-color: rgba(0, 0, 0, 0.678);
-  border-radius: 10px;
-  padding: 1.5rem;
-  z-index: 1;
+    width: 60%;
+    text-align: start;
+    background-color: rgba(0, 0, 0, 0.678);
+    border-radius: 10px;
+    padding: 1.5rem;
+    z-index: 1;
 }
 
 /*______________________KEYFRAMES________________________________*/
 @keyframes glowing {
-  0% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-  }
-  100% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  }
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
 }
