@@ -56,15 +56,10 @@ session_write_close();
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <title>SportReg</title>
+    <script src="../js/hamburgermenu.js"></script>
 </head>
 <body>
-<div class='header'>
-    <a href='../index.php'><h1 class='nav-title' id='logo'>Sportify</h1></a>
-    <ul class='horizontal-nav'>
-      <a href="../index.php" class="icon"><i class="fas fa-home"></i></a>
-    </ul>
-    
-  </div>
+<?php include('../menus/register_basic_menu.php'); ?>
 <div class="section" id="login">
     <div class="login-box" data-aos="zoom-in">
       <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">

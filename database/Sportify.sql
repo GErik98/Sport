@@ -27,7 +27,7 @@ INSERT INTO `felhasznalo` (`id`, `username`, `password`, `role`) VALUES
 (24, 'szervezo', '$2y$10$N4SwfHT5xYNu8Exqv/Ly6.gQAdL5WV3KcpQMTD3hvGopBsucfjr6u', 'szervezo'),
 (26, 'user', '$2y$10$xULNDshsbC5YQ5Z5S0Y1F.1jMHfFKoLJP3HGJm6sIJhgM.eCVpm.y', 'user');
 
-CREATE TABLE `rendezveny` (
+CREATE TABLE `esemeny` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nev` varchar(255) NOT NULL,
   `sportag` enum('foci','tenisz','f1','') NOT NULL,

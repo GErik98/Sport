@@ -30,7 +30,6 @@ if (isset($_GET["logout"])) {
   <?php
   if (!isset($_SESSION["user"])) {
     require('menus/basic_menu.php');
-    ;
   } elseif ($_SESSION["user"]["role"] === "admin") {
     require('menus/admin_menu.php');
   } elseif ($_SESSION["user"]["role"] === "szervezo") {

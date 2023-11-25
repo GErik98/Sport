@@ -1,12 +1,13 @@
-<div class='header'>
-      <a href='#home'><h1 class='nav-title' id='logo'>Sportify</h1></a>
-      <ul class='horizontal-nav'>
-      <li><a href='sites/profile.php'>SZERVEZO</a></li>
-        <li><a href='#about'>About</a></li>
-        <li><a href='#foci'>Football</a></li>
-        <li><a href='#f1'>Formula 1</a></li>
-        <li><a href='#tenisz'>Tennis</a></li>
-        <li><a href='#contact'>Contact</a></li>
-        <li><a href='index.php?logout'>Logout</a></li>
-      </ul>
-    </div>
+<div class="header" id="myNavbar">
+  <a href="#home" class="active">Sportify</a>
+  <a href='sites/profile.php'>SZERVEZO</a>
+  <a href="#about">About</a>
+  <a href="#foci">Design</a>
+  <a href="#f1">Ease of use</a>
+  <a href="#tenisz">Try it</a>
+  <a href="#contact">Contact</a>
+  <a href='index.php?logout'>Logout</a>
+  <a href="javascript:void(0);" class="icon" onclick="hamburgermenu()">
+    ☰
+  </a>
+</div>

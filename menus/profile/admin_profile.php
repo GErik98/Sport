@@ -10,30 +10,30 @@
     <title>Admin Dashboard</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="dashboard.js"></script>
+    <script src="../js/hamburgermenu.js"></script>
 </head>
 
 <body>
-
-<div class="vertical-nav">
-<ul>
-    <li class="menu-option" data-action="user_management">User Management</li>
-    <li class="menu-option" data-action="event_management">Event Management</li>
-    <li class="menu-option" data-action="contact_management">Contact Management</li>
-    <a href="../index.php?logout">Logout</a>
-    <a href="../index.php">Home</a>
-    <!-- Add more menu options as needed -->
-</ul>
-</div>
-<div class="container">
-    <h1>Welcome, <?php echo ucfirst($_SESSION["user"]["role"]); ?></h1>
-    <div id="content-container">
-    <?php
-    if (isset($_GET['message'])) {
-    echo '<p>' . htmlspecialchars($_GET['message']) . '</p>';
-    }
-    ?>
+    <div class="vertical-nav">
+        <a href="../index.php">Home</a>
+        <a class="menu-option" data-action="user_management">User Management</a>
+        <a class="menu-option" data-action="event_management">Event Management</a>
+        <a class="menu-option" data-action="contact_management">Contact Management</a>
+        <a href="../index.php?logout">Logout</a>
+        <!-- Add more menu options as needed -->
     </div>
-    <div id="user-action-container"></div>
+    <div class="container">
+        <h1>Welcome,
+            <?php echo ucfirst($_SESSION["user"]["role"]); ?>
+        </h1>
+        <div id="content-container">
+            <?php
+            if (isset($_GET['message'])) {
+                echo '<p>' . htmlspecialchars($_GET['message']) . '</p>';
+            }
+            ?>
+        </div>
+        <div id="user-action-container"></div>
 </body>
 
 </html>

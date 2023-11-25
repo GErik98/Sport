@@ -33,7 +33,7 @@ if (isset($_POST["submitLogin"]) && !empty($connDB)) {
       "role" => $user["role"],
     );
     header("location:../sites/profile.php");
-   // header("location:index.php");
+    // header("location:index.php");
   } catch (PDOException $e) {
     $error = "Adatbázis olvasási hiba: " . $e->getMessage();
   } catch (LoginException $e) {
@@ -47,20 +47,19 @@ session_write_close();
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />    <title>SportLogin</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <title>SportLogin</title>
+  <script src="../js/hamburgermenu.js"></script>
 </head>
+
 <body>
-<div class='header'>
-    <a href='../index.php'><h1 class='nav-title' id='logo'>Sportify</h1></a>
-    <ul class='horizontal-nav'>
-      <a href="../index.php" class="icon"><i class="fas fa-home"></i></a>
-    </ul>
-    
+  <?php include('../menus/login_basic_menu.php'); ?>
+  
   </div>
-<div class="section" id="login">
+  <div class="section" id="login">
     <div class="login-box" data-aos="zoom-in">
       <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
         <legend style="padding-bottom:10px; text-transform: uppercase;"><b>Login:</b></legend>
@@ -75,16 +74,16 @@ session_write_close();
         <button>Register</button>
       </a><br>
       <?php
-  if (!empty($error)) {
-    echo $error;
-  }
-  if (!empty($msg)) {
-    echo $msg;
-  } ?>
+      if (!empty($error)) {
+        echo $error;
+      }
+      if (!empty($msg)) {
+        echo $msg;
+      } ?>
     </div>
 
   </div>
-</div>
+  </div>
 </body>
 
 </html>
