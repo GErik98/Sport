@@ -21,21 +21,23 @@ if (isset($_GET["logout"])) {
   <link rel="stylesheet" href="styles.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <title>Sport</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
   <script src="./js/hamburgermenu.js"></script>
 </head>
 
 <body>
-  <?php
-  if (!isset($_SESSION["user"])) {
-    require('menus/basic_menu.php');
-  } elseif ($_SESSION["user"]["role"] === "admin") {
-    require('menus/admin_menu.php');
-  } elseif ($_SESSION["user"]["role"] === "szervezo") {
-    require('menus/szervezo_menu.php');
-  } else {
-    require('menus/user_menu.php');
-  }
-  ?>
+<?php
+if(!isset($_SESSION["user"])) {
+  require('menus/basic_menu.php');;
+} elseif($_SESSION["user"]["role"] === "admin") {
+  require('menus/admin_menu.php');
+} elseif($_SESSION["user"]["role"] === "szervezo") {
+  require('menus/szervezo_menu.php');
+} else {
+  require('menus/user_menu.php');}
+?>
+  
 
   <div class="section welcome" id="home">
     <h1>Welcome to <span class="title" id="sportify">Sportify</span>
@@ -49,25 +51,12 @@ if (isset($_GET["logout"])) {
         facere illo, maxime placeat suscipit excepturi quas ipsum commodi. Sapiente molestias accusantium asperiores
         animi
         et aliquam similique quia suscipit delectus, no</h4>
+
     </div>
   </div>
   <div class="section content foci" id="foci">
     <div class="content-wrapper" data-aos="fade-in">
-      <h3>Foci</h3>
-      <h4>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab cupiditate quidem blanditiis quam! Blanditiis
-        odit,
-        unde aspernatur molestiae rerum corrupti similique modi, impedit corporis iure natus adipisci id quod hic
-        dicta
-        facere illo, maxime placeat suscipit excepturi quas ipsum commodi. Sapiente molestias accusantium asperiores
-        animi
-        et aliquam similique quia suscipit delectus, nostrum in aut sint deleniti magni neque labore ipsum fuga rem
-        autem
-        molestiae consequatur commodi illum veniam. Non assumenda recusandae cumque obcaecati suscipit hic quas quis,
-        ut
-        temporibus provident cupiditate nihil dolorum eligendi molestias minima natus veritatis doloremque odit,
-        praesentium nesciunt, ipsum soluta corporis laborum. Odit provident explicabo iure?
-      </h4>
+    <?php include('merkozes.php');?>
     </div>
   </div>
   <div class="section content f1" id="f1">
@@ -121,18 +110,11 @@ if (isset($_GET["logout"])) {
       </form>
     </div>
   </div>
-
-  <?php
-  //echo '<br>asd'; ?>
-  <!--<script src="loginscript.js"></script>-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init();
   </script>
   
 </body>
-
-
 
 <!--<script src="animations.js"></script>-->
 

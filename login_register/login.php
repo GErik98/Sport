@@ -2,7 +2,7 @@
 session_start();
 $error = "";
 $msg = "";
-require_once("dbconnect.php");
+require_once("../dbconnect.php");
 class LoginException extends Exception
 {
 }
@@ -32,7 +32,8 @@ if (isset($_POST["submitLogin"]) && !empty($connDB)) {
       "password" => $user["password"],
       "role" => $user["role"],
     );
-    header("location:index.php");
+    header("location:../sites/profile.php");
+   // header("location:index.php");
   } catch (PDOException $e) {
     $error = "Adatbázis olvasási hiba: " . $e->getMessage();
   } catch (LoginException $e) {
@@ -48,14 +49,14 @@ session_write_close();
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />    <title>SportLogin</title>
 </head>
 <body>
 <div class='header'>
-    <a href='index.php'><h1 class='nav-title' id='logo'>Sportify</h1></a>
+    <a href='../index.php'><h1 class='nav-title' id='logo'>Sportify</h1></a>
     <ul class='horizontal-nav'>
-      <a href="index.php" class="icon"><i class="fas fa-home"></i></a>
+      <a href="../index.php" class="icon"><i class="fas fa-home"></i></a>
     </ul>
     
   </div>
