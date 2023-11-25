@@ -22,22 +22,24 @@ if (isset($_GET["logout"])) {
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <title>Sport</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  
+
   <script src="./js/hamburgermenu.js"></script>
 </head>
 
 <body>
-<?php
-if(!isset($_SESSION["user"])) {
-  require('menus/basic_menu.php');;
-} elseif($_SESSION["user"]["role"] === "admin") {
-  require('menus/admin_menu.php');
-} elseif($_SESSION["user"]["role"] === "szervezo") {
-  require('menus/szervezo_menu.php');
-} else {
-  require('menus/user_menu.php');}
-?>
-  
+  <?php
+  if (!isset($_SESSION["user"])) {
+    require('menus/basic_menu.php');
+    ;
+  } elseif ($_SESSION["user"]["role"] === "admin") {
+    require('menus/admin_menu.php');
+  } elseif ($_SESSION["user"]["role"] === "szervezo") {
+    require('menus/szervezo_menu.php');
+  } else {
+    require('menus/user_menu.php');
+  }
+  ?>
+
 
   <div class="section welcome" id="home">
     <h1>Welcome to <span class="title" id="sportify">Sportify</span>
@@ -56,7 +58,7 @@ if(!isset($_SESSION["user"])) {
   </div>
   <div class="section content foci" id="foci">
     <div class="content-wrapper" data-aos="fade-in">
-    <?php include('merkozes.php');?>
+      <?php include('merkozes.php'); ?>
     </div>
   </div>
   <div class="section content f1" id="f1">
@@ -113,7 +115,7 @@ if(!isset($_SESSION["user"])) {
   <script>
     AOS.init();
   </script>
-  
+
 </body>
 
 <!--<script src="animations.js"></script>-->
