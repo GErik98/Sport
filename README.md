@@ -46,3 +46,19 @@ jogosultságok.
 1. lépés ha sport szervezés, résztvételt akar valaki indítani akkor loginolni kell neki!
 
 ha már login megvan jogusultságtól számítva milyen része érhetők el az app-nak a usernek
+
+
+_____________________________________________________________________________________
+
+Readme before install
+hogyan kell telepíteni legyen benne
+Atis nem fog kódot nagyon nézni kb semmenyire 
+db ne legyen üres for kipróbálni lehessen egyből
+adatbázis modell legyen meg
+php sql verziók
+nagyvonalakban leírni hogyan fejlesztettük
+felhasználói doksi // pontozva lesz dokumentáció
+rosszindulatu tesztelés
+utólsó hét prezentációt - ppt kell készíteni főbb mozdulatokról és működésről, 09:30-10:00 percben legyen az idő az előadásnak
+pont elosztási arány megadása a projektben
+beadásnál már legyen benne minden
