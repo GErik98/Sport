@@ -22,7 +22,7 @@ if (isset($_GET["logout"])) {
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <title>Sport</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
+  <script src="./js/scroll_navbar.js"></script>
   <script src="./js/hamburgermenu.js"></script>
 </head>
 

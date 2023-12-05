@@ -30,6 +30,8 @@ a {
     position: fixed;
     width: 100%;
     z-index: 1000;
+    top: 0; /* Stay on top */
+    transition: top 0.3s; /* Transition effect when sliding down (and up) */
 }
 
 .header a {
