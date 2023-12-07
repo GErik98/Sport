@@ -9,8 +9,8 @@
 
     <title>Admin Dashboard</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="dashboard.js"></script>
-    <script src=".../js/hamburgermenu.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/hamburgermenu.js"></script>
 </head>
 
 <body>
