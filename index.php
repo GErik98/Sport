@@ -96,13 +96,8 @@ if (isset($_GET["logout"])) {
         Create an account, or log in if you already have one, and join one of our races!
       </p>
       <div class="btn-container">
-<<<<<<< HEAD
         <a href="./login_register/login.php" class="button">Sign In</a>
         <a href="./login_register/register.php" class="button">Sign Up</a>
-=======
-        <a href="login_register/login.php" class="button">Sign In</a>
-        <a href="login_register/register.php" class="button">Sign Up</a>
->>>>>>> 5da12628073727bb8d402a075241baed0e3041e8
       </div>
     </div>
   </div>
