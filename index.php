@@ -22,8 +22,10 @@ if (isset($_GET["logout"])) {
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <title>Sport</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="./js/scroll_navbar.js"></script>
   <script src="./js/hamburgermenu.js"></script>
+  <script src="./js/search.js"></script>
 </head>
 
 <body>
@@ -96,13 +98,9 @@ if (isset($_GET["logout"])) {
         Create an account, or log in if you already have one, and join one of our races!
       </p>
       <div class="btn-container">
-<<<<<<< HEAD
-        <a href="./login_register/login.php" class="button">Sign In</a>
-        <a href="./login_register/register.php" class="button">Sign Up</a>
-=======
         <a href="login_register/login.php" class="button">Sign In</a>
         <a href="login_register/register.php" class="button">Sign Up</a>
->>>>>>> 5da12628073727bb8d402a075241baed0e3041e8
+
       </div>
     </div>
   </div>
