@@ -15,13 +15,14 @@ $(document).ready(function() {
         // Get the data attributes
         var action = $(this).data('action');
         var userId = $(this).data('userid');
+        var eventId = $(this).data('eventid');
 
 
         // Perform an AJAX request based on the action and userId
         $.ajax({
             url: 'ajax_handler.php', // Replace with the actual URL that handles the AJAX request
             type: 'POST',
-            data: { action: action, userId: userId },
+            data: { action: action, userId: userId, eventId: eventId },
             success: function(response) {
                 // Update the content container with the response
                 $('#user-action-container').html(response);

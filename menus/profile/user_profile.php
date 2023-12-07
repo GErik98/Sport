@@ -15,26 +15,25 @@
 
 <body>
 
-<div class="vertical-nav">
-<ul>
-    <li class="menu-option" data-action="profile_settings">Profile settings</li>
-    <li class="menu-option" data-action="event_management">Event Management</li>
-    <li class="menu-option" data-action="contact_management">Contact Management</li>
-    <a href="../index.php?logout">Logout</a>
-    <a href="../index.php">Home</a>
-    <!-- Add more menu options as needed -->
-</ul>
-</div>
-<div class="container">
-    <h1>Welcome, <?php echo ucfirst($_SESSION["user"]["role"]); ?>!</h1>
-    <div id="content-container">
-    <?php
-    if (isset($_GET['message'])) {
-    echo '<p>' . htmlspecialchars($_GET['message']) . '</p>';
-    }
-    ?>
+    <div class="vertical-nav">
+        <ul>
+            <li class="menu-option" data-action="profile_settings">Profile settings</li>
+            <li class="menu-option" data-action="event_management">Event Management</li>
+            <a href="../index.php?logout">Logout</a>
+            <a href="../index.php">Home</a>
+            <!-- Add more menu options as needed -->
+        </ul>
     </div>
-    <div id="user-action-container"></div>
+    <div class="container">
+        <h1>Welcome, <?php echo ucfirst($_SESSION["user"]["role"]); ?>!</h1>
+        <div id="content-container">
+            <?php
+            if (isset($_GET['message'])) {
+                echo '<p>' . htmlspecialchars($_GET['message']) . '</p>';
+            }
+            ?>
+        </div>
+        <div id="user-action-container"></div>
 </body>
 
 </html>

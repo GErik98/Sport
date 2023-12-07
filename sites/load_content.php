@@ -5,9 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Your Page</title>
     <!-- Include jQuery on this specific page -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="dashboard.js"></script>
 </head>
 <?php
 // load_content.php
@@ -101,7 +103,9 @@ if ($action === 'user_management') {
             <ul>
                 <?php foreach ($events as $event) : ?>
                     <?php if ($event["sportag"] === $category) : ?>
-                        <li><?php echo $event["nev"]; ?> - <?php echo $event["datetime"]; ?></li>
+                        <li><?php echo $event["nev"]; ?> - <?php echo $event["datetime"]; ?> <a href="#" class="management-option" data-action="enter" data-userid="<?php echo $user["id"]; ?>" data-eventid="<?php echo $event['id']; ?>">
+                                <i class="fa-solid fa-right-to-bracket"></i> Join
+                            </a></li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
