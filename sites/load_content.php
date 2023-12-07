@@ -83,7 +83,9 @@ if ($action === 'user_management') {
                 <?php foreach ($events as $event) : ?>
                     <?php if ($event["sportag"] === $category) : ?>
                         <li><?php echo $event["nev"]; ?> - <?php echo $event["datetime"]; ?> <a href="#" class="management-option" data-action="remove" data-userid="<?php echo $user["id"]; ?>" data-eventid="<?php echo $event['id']; ?>">
-                                <i class="fas fa-trash"></i> Remove
+                                <i class="fas fa-trash"></i>
+                            </a><a href="#" class="management-option" data-action="info" data-userid="<?php echo $user["id"]; ?>" data-eventid="<?php echo $event['id']; ?>">
+                                <i class="fa-solid fa-info"></i>
                             </a></li>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -119,50 +121,52 @@ if ($action === 'user_management') {
 
         $loadedContent = "<div class='content-container'>" . ob_get_clean() . "</div>  "; // Get the output buffer and clean it
     }
-} elseif ($action === 'contact_management') {
-    ob_start();
-    ?>
-    <h2>Messages</h2>
-    <?php
-    foreach ($contacts as $contact) :
-    ?>
-        <h4><?php echo ucfirst($contact["name"]); ?>:</h4>
-        <ul>
-            <li><?php echo $contact["message"]; ?> --- <?php echo "date:" . $contact["submission_date"]; ?></li>
+} elseif ($action === 'contact_management') { ?>
+    <?php ob_start(); ?>
+    <div class="comments-section">
+        <h2>Messages</h2>
+        <?php foreach ($contacts as $contact) : ?>
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author"><?php echo ucfirst($contact["name"]); ?></span>
+                    <span class="comment-email"><?php echo $contact["email"]; ?></span>
+                    <span class="comment-date"><?php echo "Date: " . $contact["submission_date"]; ?></span>
+                </div>
+                <p class="comment-content"><?php echo $contact["message"]; ?></p>
+            </div>
         <?php endforeach; ?>
-        </ul>
-        <?php
-        $loadedContent = ob_get_clean();
-    } elseif ($action === 'profile_settings') {
-        ob_start();
-        $userId = $_SESSION['user']['id'];
+    </div>
+    <?php $loadedContent = ob_get_clean();
+} elseif ($action === 'profile_settings') {
+    ob_start();
+    $userId = $_SESSION['user']['id'];
 
-        $queryUser = $connDB->prepare('SELECT id, username, password FROM felhasznalo WHERE id = :userId');
-        $queryUser->bindParam(':userId', $userId, PDO::PARAM_INT);
-        $queryUser->execute();
+    $queryUser = $connDB->prepare('SELECT id, username, password FROM felhasznalo WHERE id = :userId');
+    $queryUser->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $queryUser->execute();
 
-        $userData = $queryUser->fetch(PDO::FETCH_ASSOC);
+    $userData = $queryUser->fetch(PDO::FETCH_ASSOC);
 
-        if ($userData) { ?>
-            <?php echo ucfirst($userData["username"]) . "\n";
-            echo "| " . $userData["id"]; ?>
-            <span class="management-options">
-                <a href="#" class="management-option" data-action="modify" data-userid="<?php echo $userData["id"]; ?>">
-                    <i class="fas fa-edit"></i> Modify
-                </a>
-                <a href="#" class="management-option" data-action="delete" data-userid="<?php echo $userData["id"]; ?>">
-                    <i class="fas fa-trash"></i> Delete
-                </a>
-            </span>
-    <?php
-        } else {
-            echo 'User not found.';
-        }
-
-        $loadedContent = ob_get_clean();
+    if ($userData) { ?>
+        <?php echo ucfirst($userData["username"]) . "\n";
+        echo "| " . $userData["id"]; ?>
+        <span class="management-options">
+            <a href="#" class="management-option" data-action="modify" data-userid="<?php echo $userData["id"]; ?>">
+                <i class="fas fa-edit"></i> Modify
+            </a>
+            <a href="#" class="management-option" data-action="delete" data-userid="<?php echo $userData["id"]; ?>">
+                <i class="fas fa-trash"></i> Delete
+            </a>
+        </span>
+<?php
+    } else {
+        echo 'User not found.';
     }
 
-    // Return the content
-    echo $loadedContent;
+    $loadedContent = ob_get_clean();
+}
 
-    ?>
+// Return the content
+echo $loadedContent;
+
+?>

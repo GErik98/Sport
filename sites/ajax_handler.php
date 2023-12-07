@@ -12,17 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userId = isset($_POST['userId']) ? $_POST['userId'] : null;
         // Your code to load modification form or perform modifications
 ?>
+        Minden mezőt ki kell tölteni!
         <div class="admin_panels">
             <form id="modifyForm" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
                 <fieldset>
                     <legend>Beállítások</legend>
                     <input type="hidden" name="userId" value="<?php echo $userId; ?>">
                     <label for="username">Felhasználónév megváltoztatása</label>
-                    <input type="text" id="username" name="username"><br>
+                    <input type="text" id="username" name="username" required><br>
                     <label for="password">Jelszó megváltoztatása</label>
-                    <input type="text" id="password" name="password"><br>
+                    <input type="text" id="password" name="password" required><br>
                     <label for="username">Szerep megváltoztatása</label>
-                    <select id="roleSelect" name="roleSelect">
+                    <select id="roleSelect" name="roleSelect" required>
                         <option value="user">Játékos</option>
                         <option value="szervezo">Szervező</option>
                     </select><br>
@@ -184,7 +185,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if ($action === 'remove') {
         $eventId = isset($_POST['eventId']) ? $_POST['eventId'] : null;
-        echo '<h3>Remove Event Form</h3>';
         try {
             $removeQuery = $connDB->prepare("DELETE FROM esemeny WHERE id = :eventId");
             $removeQuery->bindParam(':eventId', $eventId, PDO::PARAM_INT);
@@ -198,6 +198,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (PDOException $e) {
             $error = "Adatbázis törlési hiba: " . $e->getMessage();
         }
+    }
+
+    if ($action === 'info') {
+        $eventId = isset($_POST['eventId']) ? $_POST['eventId'] : null;
+        $sqlPlayers = "SELECT felhasznalo.username, felhasznalo.id
+        FROM event_users
+        JOIN felhasznalo ON event_users.user_id = felhasznalo.id
+        WHERE event_users.event_id = :eventId";
+        $queryPlayers = $connDB->prepare($sqlPlayers);
+        $queryPlayers->bindParam(':eventId', $eventId, PDO::PARAM_INT);
+        $queryPlayers->execute();
+        $players = $queryPlayers->fetchAll(PDO::FETCH_ASSOC);
+
+        // Display the list of players
+        echo "<h2>Players Joined</h2>";
+        echo "<ul>";
+        foreach ($players as $player) {
+            echo "<li>ID:{$player['id']} -{$player['username']}</li>";
+        }
+        echo "</ul>";
     }
     if (isset($_POST['submitEvent'])) {
         try {
