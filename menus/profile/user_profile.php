@@ -17,11 +17,11 @@
 
 <div class="vertical-nav">
 <ul>
-    <li class="menu-option" data-action="profile_settings">Profile settings</li>
-    <li class="menu-option" data-action="event_management">Event Management</li>
-    <li class="menu-option" data-action="contact_management">Contact Management</li>
-    <a href="../index.php?logout">Logout</a>
     <a href="../index.php">Home</a>
+    <li class="menu-option" data-action="profile_settings">Profile settings</li>
+    <li class="menu-option" data-action="event_management">Event list</li> 
+    <a href="../index.php?logout">Logout</a>
+    
     <!-- Add more menu options as needed -->
 </ul>
 </div>

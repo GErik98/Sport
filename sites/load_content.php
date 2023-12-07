@@ -7,7 +7,7 @@
     <title>Your Page</title>
     <!-- Include jQuery on this specific page -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="./js/dashboard.js"></script>
+    <script src="../js/dashboard.js"></script>
 </head>
 <?php
 // load_content.php
