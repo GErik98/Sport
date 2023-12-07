@@ -146,6 +146,9 @@ li {
 .content {
     text-align: center;
 }
+.event_search {
+  width: 35%;
+}
 .event {
     background: url("img/events_bg.jpg") center/cover no-repeat;
 }
@@ -230,7 +233,7 @@ input {
 }
 
 #about li {
-    padding-left: 5%;
+  padding-left: 5%;
 }
 
 #contact p {
