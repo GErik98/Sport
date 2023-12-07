@@ -182,6 +182,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "You are already registered for the event.";
         }
     }
+    if ($action === 'remove') {
+        $eventId = isset($_POST['eventId']) ? $_POST['eventId'] : null;
+        echo '<h3>Remove Event Form</h3>';
+        try {
+            $removeQuery = $connDB->prepare("DELETE FROM esemeny WHERE id = :eventId");
+            $removeQuery->bindParam(':eventId', $eventId, PDO::PARAM_INT);
+            $removeQuery->execute();
+
+            if ($removeQuery->rowCount() > 0) {
+                echo '<p>Event deleted successfully for Event ID: ' . $eventId . '</p>';
+            } else {
+                echo '<p>Event deletion failed for Event ID: ' . $eventId . '</p>';
+            }
+        } catch (PDOException $e) {
+            $error = "Adatbázis törlési hiba: " . $e->getMessage();
+        }
+    }
     if (isset($_POST['submitEvent'])) {
         try {
             $eventName = $_POST['eventName'];
