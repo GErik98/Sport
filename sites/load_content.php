@@ -70,6 +70,7 @@ if ($action === 'user_management') {
     ?>
         <a href="#" class="management-option" data-action="addEvent"><button>Add Event</button></a>
         <h2>Events:</h2>
+        <input type="text" id="eventSearch" placeholder="Search events">
         <?php
         ob_start(); // Start output buffering
         ?>
@@ -81,7 +82,9 @@ if ($action === 'user_management') {
             <ul>
                 <?php foreach ($events as $event) : ?>
                     <?php if ($event["sportag"] === $category) : ?>
-                        <li><?php echo $event["nev"]; ?> - <?php echo $event["datetime"]; ?></li>
+                        <li><?php echo $event["nev"]; ?> - <?php echo $event["datetime"]; ?> <a href="#" class="management-option" data-action="remove" data-userid="<?php echo $user["id"]; ?>" data-eventid="<?php echo $event['id']; ?>">
+                                <i class="fas fa-trash"></i> Remove
+                            </a></li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
@@ -92,6 +95,8 @@ if ($action === 'user_management') {
     } else {
         ?>
         <h2>Events:</h2>
+
+        <input type="text" id="eventSearch" placeholder="Search events">
         <?php
         ob_start(); // Start output buffering
         ?>

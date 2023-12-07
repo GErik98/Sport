@@ -153,40 +153,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </fieldset>
             </form>
         </div>
-    <?php
+<?php
     }
     if ($action === 'enter') {
+        // Get user ID from the session
         $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
+
+        // Get event ID from the POST request
         $eventId = isset($_POST['eventId']) ? $_POST['eventId'] : null;
-        echo "ID:" . $userId; ?>
-        <br> <?php
-                echo "EventId:" . $eventId;
-            }
-            if (isset($_POST['submitEvent'])) {
-                try {
-                    $eventName = $_POST['eventName'];
-                    $sportAg = $_POST['eventSelect'];
-                    $merkozes = $_POST['typeSelect'];
-                    $datum = $_POST['dateTime'];
 
-                    $stmt = "INSERT INTO esemeny (nev, sportag, tipus, datetime) VALUES (:eventName, :sportAg, :merkozes, :datum)";
-                    $eventInsert = $connDB->prepare($stmt);
-                    $eventInsert->bindParam(":eventName", $eventName, PDO::PARAM_STR);
-                    $eventInsert->bindParam(":sportAg", $sportAg, PDO::PARAM_STR);
-                    $eventInsert->bindParam(":merkozes", $merkozes, PDO::PARAM_STR);
-                    $eventInsert->bindParam(":datum", $datum, PDO::PARAM_STR);
+        // Check if the user is already registered for the event
+        $checkSql = "SELECT * FROM event_users WHERE user_id = :userId AND event_id = :eventId";
+        $checkStmt = $connDB->prepare($checkSql);
+        $checkStmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $checkStmt->bindParam(':eventId', $eventId, PDO::PARAM_INT);
+        $checkStmt->execute();
 
-                    $eventInsert->execute();
+        if ($checkStmt->rowCount() === 0) {
+            // User is not yet registered for the event, insert a new record
+            $insertSql = "INSERT INTO event_users (user_id, event_id) VALUES (:userId, :eventId)";
+            $insertStmt = $connDB->prepare($insertSql);
+            $insertStmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $insertStmt->bindParam(':eventId', $eventId, PDO::PARAM_INT);
+            $insertStmt->execute();
 
-                    if ($eventInsert->rowCount() > 0) {
-                        echo '<script>window.location.href = "profile.php?message=Event added successfully!";</script>';
-                    } else {
-                        echo '<p>Failed attempt.</p>';
-                    }
-                } catch (PDOException $e) {
-                    $error = 'Adatbázis hiba: ' . $e->getMessage();
-                }
-            }
+            echo "Successfully registered for the event!";
+        } else {
+            echo "You are already registered for the event.";
         }
+    }
+    if (isset($_POST['submitEvent'])) {
+        try {
+            $eventName = $_POST['eventName'];
+            $sportAg = $_POST['eventSelect'];
+            $merkozes = $_POST['typeSelect'];
+            $datum = $_POST['dateTime'];
 
-                ?>
+            $stmt = "INSERT INTO esemeny (nev, sportag, tipus, datetime) VALUES (:eventName, :sportAg, :merkozes, :datum)";
+            $eventInsert = $connDB->prepare($stmt);
+            $eventInsert->bindParam(":eventName", $eventName, PDO::PARAM_STR);
+            $eventInsert->bindParam(":sportAg", $sportAg, PDO::PARAM_STR);
+            $eventInsert->bindParam(":merkozes", $merkozes, PDO::PARAM_STR);
+            $eventInsert->bindParam(":datum", $datum, PDO::PARAM_STR);
+
+            $eventInsert->execute();
+
+            if ($eventInsert->rowCount() > 0) {
+                echo '<script>window.location.href = "profile.php?message=Event added successfully!";</script>';
+            } else {
+                echo '<p>Failed attempt.</p>';
+            }
+        } catch (PDOException $e) {
+            $error = 'Adatbázis hiba: ' . $e->getMessage();
+        }
+    }
+}
+
+?>

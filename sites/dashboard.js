@@ -67,3 +67,18 @@ $(document).ready(function() {
         });
     });
 });
+$(document).ready(function() {
+    $('#eventSearch').on('input', function() {
+        var searchTerm = $(this).val().toLowerCase();
+
+        // Loop through each event item and show/hide based on the search term
+        $('.content-container ul li').each(function() {
+            var eventText = $(this).text().toLowerCase();
+            if (eventText.includes(searchTerm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
