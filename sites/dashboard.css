@@ -19,20 +19,11 @@ body {
   border-radius: 3px;
 }
 
-h1 {
-  color: #333; /* Black */
-}
-
-h2 {
-  color: #333; /* Dark Gray */
-}
-
-h3 {
-  color: #333; /* Gray */
-}
-
+h1,
+h2,
+h3,
 h4 {
-  color: #333; /* Light Gray */
+  color: #333;
 }
 
 ul {
@@ -82,7 +73,14 @@ li.user-row {
   grid-template-columns: repeat(3, auto);
   gap: 5px;
 }
-
+a {
+  text-decoration: none;
+  color: #333;
+  transition: 0.2s ease;
+}
+a:hover {
+  color: rgb(163, 35, 35);
+}
 .management-options a {
   text-decoration: none;
   color: black;
@@ -122,4 +120,38 @@ li.user-row {
 .vertical-nav a:hover {
   background-color: #555;
   cursor: pointer;
+}
+
+/*------------------------------------ COMMENT SECTION ----------------------------------------*/
+.comments-section {
+  font-family: "Arial", sans-serif;
+}
+
+.comment {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+.comment-email {
+  color: #888;
+  font-size: 14px;
+}
+.comment-date {
+  color: #666;
+  font-size: 12px;
+}
+
+.comment-content {
+  margin-top: 8px;
 }
