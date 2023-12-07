@@ -158,10 +158,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if ($action === 'enter') {
         // Get user ID from the session
-        $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
+
+        if (!isset($_SESSION['user']['id'])){
+            echo "userid null!".($_SESSION['user']['id']); 
+        }
+        else {
+            $userId = $_SESSION['user']['id'];
+        }
+        if (!isset($_POST['eventId'])){
+            echo "eventId null!".($_POST['eventId']);
+        }
+        else {
+            $eventId = $_POST['eventId'];
+        }
+        // $userId = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
 
         // Get event ID from the POST request
-        $eventId = isset($_POST['eventId']) ? $_POST['eventId'] : null;
+        // $eventId = isset($_POST['eventId']) ? $_POST['eventId'] : null;
 
         // Check if the user is already registered for the event
         $checkSql = "SELECT * FROM event_users WHERE user_id = :userId AND event_id = :eventId";
