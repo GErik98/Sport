@@ -46,52 +46,59 @@ if (isset($_GET["logout"])) {
 
   <div class="section about" id="about">
     <div class="content-wrapper">
-      <h3>Our goals</h3>
-      <h4>The goal of this website is to madafakapipip and the asdafasdasf so bas asd aseg esgesaged and exactly erum
-        corrupti similique modi, impedit corporis iure natus adipisci id quod hic dicta
-        facere illo, maxime placeat suscipit excepturi quas ipsum commodi. Sapiente molestias accusantium asperiores
-        animi
-        et aliquam similique quia suscipit delectus, no</h4>
+      <h4>Our goals</h4>
+      <p>At Sportify, we are dedicated to empowering sports enthusiasts and event organizers. Our mission is to provide a seamless platform that fosters community engagement, event creation, and participation in sporting activities. Here are our key goals:<br>
+        <li style="list-style: none;">1. Facilitate Event Participation</li>
+        <li style="list-style: none">2. Streamline Event Creation</li>
+        <li style="list-style: none">3. Real-Time Event Updates</li>
+        <li style="list-style: none">4. Foster a Thriving Sports Community</li>
+      </p>
 
     </div>
   </div>
-  <div class="section content foci" id="foci">
+  <div class="section content event" id="event">
     <div class="content-wrapper" data-aos="fade-in">
       <?php include('merkozes.php'); ?>
     </div>
   </div>
+  <div class="section content foci" id="foci">
+    <div class="content-wrapper" data-aos="fade-in">
+      <h4>Matchmaking</h4>
+      <p>
+        Discover the power of seamless matchmaking with Sportify! Our platform offers a unique and efficient way to connect with fellow sports enthusiasts, creating exciting opportunities for a variety of sports, including but not limited to:</p>
+      <li><b>Football Matches</b></li>
+
+      <p>Whether you're a striker with a killer instinct or a goalkeeper with lightning reflexes, Sportify enables you to find and join football matches that match your skill level and playing style.</p>
+
+      <li><b>Basketball Showdowns</b></li>
+
+      <p>Dribble, shoot, and slam dunk your way to victory! Sportify brings basketball enthusiasts together, making it easy to form teams or join existing matchups for a thrilling game on the court.</p>
+
+      </p>
+    </div>
+  </div>
   <div class="section content f1" id="f1">
     <div class="content-wrapper" data-aos="fade-in">
-      <h3>F1</h3>
-      <h4>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut doloremque mollitia ab sit eum dolore. Nesciunt,
-        perferendis? Ullam adipisci distinctio nemo assumenda quisquam, accusantium nam molestias consequatur, facilis
-        hic
-        perferendis dolores quod blanditiis nobis aspernatur doloribus aut in. Ut excepturi architecto, fuga dolore
-        tenetur adipisci odit consectetur temporibus, illo accusamus nemo, blanditiis culpa provident? Officiis cum
-        provident laborum, praesentium nesciunt rem dolorem rerum ullam architecto nihil exercitationem nam!
-        Repudiandae
-        harum molestias quis nisi ducimus aspernatur error tempore et. Nobis explicabo alias enim qui cupiditate
-        deleniti?
-        Cupiditate aliquid eos est soluta? Quos, maxime voluptatum molestiae maiores qui non pariatur suscipit ipsa.
-      </h4>
+      <h4>Racing Adventures</h4>
+      <p>
+        Rev up your engines and lace up your running shoes – Sportify is your ultimate destination for thrilling racing adventures! Unleash the speed demon within you and explore a variety of racing experiences, including:
+      </p>
+      <li><b>Track & Field Showdowns</b></li>
+      <p>Feel the adrenaline rush on the track and field! Sportify brings together sprinters, jumpers, and throwers to compete in exciting competitions. Join or create events to showcase your speed, agility, and strength.</p>
+      <li><b>Motorsport Meets</b></li>
+      <p>For the petrolheads and racing enthusiasts, Sportify is your pit stop for motorsport meets. Connect with fellow racers, form racing teams, and compete in thrilling races, whether it's on the asphalt or off-road.</p>
     </div>
   </div>
   <div class="section content tenisz" id="tenisz">
     <div class="content-wrapper" data-aos="fade-in">
-      <h3>Tenisz</h3>
-      <h4>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quasi ex ipsum explicabo quidem id, soluta,
-        aspernatur temporibus architecto placeat quam ab voluptas cum amet eum, hic optio ducimus! Eveniet, aliquam
-        minus.
-        Dicta ipsa molestias harum enim. Aliquam cumque molestias temporibus saepe animi, illum assumenda quaerat
-        magni
-        reiciendis eveniet alias odio quam expedita, corrupti cum voluptate, porro soluta quasi! Sequi, sed soluta.
-        Aperiam molestias dicta voluptate nisi nesciunt ullam optio officia harum blanditiis adipisci odit voluptates
-        a
-        pariatur reprehenderit fuga cupiditate, minima repellat deserunt nostrum. Odit architecto odio quibusdam totam
-        quas eveniet unde, velit provident, ab dolores quidem expedita cum.
-      </h4>
+      <h4>Try it!</h4>
+      <p>
+        Create an account, or log in if you already have one, and join one of our races!
+      </p>
+      <div class="btn-container">
+        <a href="/login_register/login.php" class="button">Sign In</a>
+        <a href="/login_register/register.php" class="button">Sign Up</a>
+      </div>
     </div>
   </div>
   <div class="section " id="contact">
