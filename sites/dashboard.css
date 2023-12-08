@@ -6,6 +6,11 @@ body {
   margin: 0;
 }
 
+.error {
+  background-color: red;
+  border: 1px solid black;
+}
+
 .container {
   margin-left: 200px;
   padding: 20px;
